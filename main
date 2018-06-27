@@ -1,4 +1,7 @@
 module.exports.loop = function () {
+    for (creep in Game.creeps) { 
+        console.log(creep);
+    }
 
 }
 
