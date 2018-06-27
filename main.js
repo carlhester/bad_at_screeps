@@ -32,10 +32,10 @@ module.exports.loop = function() {
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
 
-    console.log('Scrapers: ' + scrapers.length);
-    console.log('Harvesters: ' + harvesters.length);
-    console.log('Builders: ' + builders.length);
-    console.log('Upgraders: ' + upgraders.length);
+    console.log('Scrapers: ' + scrapers.length + 
+        '\tHarvesters: ' + harvesters.length + 
+        '\tBuilders: ' + builders.length + 
+        '\tUpgraders: ' + upgraders.length);
 
     if (scrapers.length < 2) {
         var newName = 'Scraper' + Game.time;
