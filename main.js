@@ -21,7 +21,7 @@ module.exports.loop = function() {
 
     if (harvesters.length < 6) {
         var newName = 'Harvester-' + Game.time;
-        result = Game.spawns['CHSpawn'].spawnCreep([WORK, WORK, CARRY, MOVE], newName, { memory: { role: 'harvester' } });
+        result = Game.spawns['CHSpawn'].spawnCreep([WORK, WORK, CARRY, MOVE], newName, { memory: { role: 'harvester', harvest_target: 0 } });
         if (result == 0) { 
             console.log('Spawning new harvester: ' + newName);
         } else { 
