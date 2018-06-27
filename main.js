@@ -47,7 +47,7 @@ module.exports.loop = function() {
         }
     }
 
-    if (harvesters.length < 2) {
+    if (harvesters.length < 4) {
         var newName = 'Harvester' + Game.time;
         var result = Game.spawns['CHSpawn'].spawnCreep([WORK, CARRY, MOVE, MOVE], newName, { memory: { role: 'harvester', harvest_target: 0 } });
         if (result == 0) {
