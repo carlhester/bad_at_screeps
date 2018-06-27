@@ -39,7 +39,7 @@ module.exports.loop = function() {
 
     if (scrapers.length < 2) {
         var newName = 'Scraper' + Game.time;
-        var result = Game.spawns['CHSpawn'].spawnCreep([WORK, WORK, WORK, WORK, MOVE], newName, { memory: { role: 'scraper', harvest_target: 0 } });
+        var result = Game.spawns['CHSpawn'].spawnCreep([WORK, WORK, MOVE], newName, { memory: { role: 'scraper', harvest_target: 0 } });
         if (result == 0) {
             console.log('Spawning new scraper: ' + newName);
         } else {
