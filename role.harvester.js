@@ -22,6 +22,7 @@ var roleHarvester = {
                 }
             } else { 
                 creep.drop(RESOURCE_ENERGY)
+                console.log(creep.name + ' dropped energy')
             }
         }
     }
