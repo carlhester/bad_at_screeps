@@ -1,6 +1,8 @@
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
+var roleBuilder = require('role.scraper');
+
 
 module.exports.loop = function () {
     var tower = Game.getObjectById('TOWER_ID');
@@ -25,16 +27,26 @@ module.exports.loop = function () {
         }
     }
 
-
+    var scrapers = _.filter(Game.creeps, (creep) => creep.memory.role == 'scraper');
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
 
-
+    console.log('Scrapers: ' + scrapers.length);
     console.log('Harvesters: ' + harvesters.length);
     console.log('Builders: ' + builders.length);
     console.log('Upgraders: ' + upgraders.length);
 
+    if(scrapers.length < 2) {
+        var newName = 'Scraper' + Game.time;        
+        var result = Game.spawns['CHSpawn'].spawnCreep([WORK,WORK,WORK,WORK,MOVE], newName,
+            {memory: {role: 'scraper', harvest_target: 0}});
+        if (result == 0) { 
+            console.log('Spawning new scraper: ' + newName);
+        } else { 
+            console.log('Scraper Spawn Result: ' + result)
+        }
+    }
 
     if(harvesters.length < 2) {
         var newName = 'Harvester' + Game.time;        
@@ -83,6 +95,9 @@ module.exports.loop = function () {
         }
         if(creep.memory.role == 'builder') {
             roleBuilder.run(creep);
+        }
+        if(creep.memory.role == 'scraper') {
+            roleScraper.run(creep, 0);
         }
     }
 }
