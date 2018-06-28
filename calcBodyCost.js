@@ -4,11 +4,11 @@ var calcBodyCost = {
     calc: function(bodyArray) {
         bodyCost = 0;
         for (bodyPart in bodyArray) {
-            if (bodyPart == MOVE) { 
+            if (bodyArray[bodyPart] == MOVE) { 
                 bodyCost += 50;
-            } else if (bodyPart == CARRY) { 
+            } else if (bodyArray[bodyPart] == CARRY) { 
                 bodyCost += 50;
-            } else if (bodyPart == WORK) { 
+            } else if (bodyArray[bodyPart] == WORK) { 
                 bodyCost += 100
             }
 
