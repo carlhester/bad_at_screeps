@@ -41,9 +41,15 @@ module.exports.loop = function() {
         '\tBuilders: ' + builders.length + 
         '\tUpgraders: ' + upgraders.length);
 
+    const scraperBody = [WORK, WORK, WORK, WORK, WORK, MOVE]
+    const harvesterBody = [WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
+    const builderBody = [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
+    const upgraderBody = [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE]
+
+
     if (scrapers.length < 4) {
         var newName = 'Scraper' + Game.time;
-        var bodyArray = [WORK, WORK, WORK, WORK, MOVE]
+        var bodyArray = scraperBody;
         calcBodyCost.calc(bodyArray);
 
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'scraper', harvest_target: 0 } });
@@ -56,7 +62,7 @@ module.exports.loop = function() {
 
     if (harvesters.length < 4) {
         var newName = 'Harvester' + Game.time;
-        var bodyArray = [WORK, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE]
+        var bodyArray = harvesterBody;
         calcBodyCost.calc(bodyArray);
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'harvester', harvest_target: 0, transfer_target: 0 } });
         if (result == 0) {
@@ -68,7 +74,7 @@ module.exports.loop = function() {
 
     if (builders.length < 2) {
         var newName = 'Builder' + Game.time;
-        var bodyArray = [WORK, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE]
+        var bodyArray = builderBody; 
         calcBodyCost.calc(bodyArray);
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'builder' } });
         if (result == 0) {
@@ -80,7 +86,7 @@ module.exports.loop = function() {
 
     if (upgraders.length < 2) {
         var newName = 'Upgrader' + Game.time;
-        var bodyArray = [WORK, CARRY, CARRY, CARRY, MOVE, MOVE]
+        var bodyArray = upgraderBody;
         calcBodyCost.calc(bodyArray);
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'upgrader' } });
         if (result == 0) {
