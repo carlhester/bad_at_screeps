@@ -29,39 +29,22 @@ var roleHarvester = {
                 }
             });
                 if(targets == 0){
+                    console.log('no structures, try container');
                     var targets = creep.room.find(FIND_STRUCTURES, { 
                         filter: (structure) => { 
-                            return (structure.structureType == STRUCTURE_CONTAINER) && 
-                            structure.store[RESOURCE_ENERGY] < structure.energyCapacity;
+                            return (structure.structureType == STRUCTURE_CONTAINER)
+                            && _.sum(structure.store) < structure.storeCapacity;
                         }
                     })
-
-
-
                 }
 
 
                 if(targets.length > 0) {
+                    console.log(targets);
                     if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
                     }
-                } else { 
-                    
-
-                /**if(targets.length > 0) { 
-                    var result = creep.transfer(targets[creep.memory.transfer_target], RESOURCE_ENERGY)
-                    if(result == ERR_NOT_IN_RANGE) { 
-                        creep.moveTo(targets[creep.memory.transfer_target], {visualizePathStyle: {stroke: '#ffffff'}});
-                    } else if (result == ERR_FULL) { 
-                        creep.memory.transfer_target += 1;
-                        if (creep.memory.transfer_target == targets.length) { 
-                            creep.memory.transfer_target = 0;
-                        }
-
-                    }
-                }
-                **/                
-                if (creep.carry.energy > 0){ 
+                } else if (creep.carry.energy > 0){ 
                     var result = creep.upgradeController(creep.room.controller)
                     if (result == ERR_NOT_IN_RANGE) {
                         creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
@@ -71,7 +54,7 @@ var roleHarvester = {
 
         }
 
-    }
-};
+    };
+
 
 module.exports = roleHarvester;
