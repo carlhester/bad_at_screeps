@@ -90,14 +90,15 @@ module.exports.loop = function() {
             roleBuilder.run(creep);
         }
         if (creep.memory.role == 'scraper') {
-            var scrape_counter += 1;
+            scrape_counter += 1;
             if (scrape_counter % 2 == 0) {
                 creep.memory.harvest_target = 0;
             } else {
                 creep.memory.harvest_target = 1;
             }
             roleScraper.run(creep, creep.memory.harvest_target);
+            creep.say(creep.memory.harvest_target);
+
         }
-        creep.say(creep.memory.harvest_target);
     }
 }
