@@ -84,7 +84,7 @@ module.exports.loop = function() {
         }
     }
 
-    if (upgraders.length < 2) {
+    if (upgraders.length < 6) {
         var newName = 'Upgrader' + Game.time;
         var bodyArray = upgraderBody;
         calcBodyCost.calc(bodyArray);
