@@ -29,7 +29,6 @@ var roleHarvester = {
                 }
             });
                 if(targets == 0){
-                    console.log('no structures, try container');
                     var targets = creep.room.find(FIND_STRUCTURES, { 
                         filter: (structure) => { 
                             return (structure.structureType == STRUCTURE_CONTAINER)
@@ -40,7 +39,6 @@ var roleHarvester = {
 
 
                 if(targets.length > 0) {
-                    console.log(targets);
                     if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
                     }
