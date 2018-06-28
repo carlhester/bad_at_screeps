@@ -24,7 +24,7 @@ var roleUpgrader = {
                     structure.store[RESOURCE_ENERGY] > 200;
                 }
             })
-            if (targets > 0) { 
+            if (targets.length > 0) { 
                 var result = creep.withdraw(targets[0], RESOURCE_ENERGY);
                 if (result == ERR_NOT_IN_RANGE){
                     creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
