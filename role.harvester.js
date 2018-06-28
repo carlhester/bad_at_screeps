@@ -22,6 +22,26 @@ var roleHarvester = {
                 if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
                 }
+            } else { 
+                var targets = creep.room.find(FIND_STRUCTURES, { 
+                    filter: (structure) => { 
+                        return (structure.structureType == STRUCTURE_CONTAINER);
+                    }
+                })
+
+                if(targets.length > 0) { 
+                    var result = creep.transfer(targets[creep.memory.transfer_target], RESOURCE_ENERGY)
+                    if(result == ERR_NOT_IN_RANGE) { 
+                        creep.moveTo(targets[creep.memory.transfer_target], {visualizePathStyle: {stroke: '#ffffff'}});
+                    } else if (result == ERR_FULL) { 
+                        creep.memory.transfer_target += 1;
+                        if (creep.memory.transfer_target == targets.length) { 
+                            creep.memory.transfer_target = 0;
+                        }
+
+                    }
+                }                
+
             }
         }
     }
