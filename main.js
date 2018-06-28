@@ -2,13 +2,13 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleScraper = require('role.scraper');
-
+var calcBodyCost = require('calcBodyCost')
 
 module.exports.loop = function() {
     for(var name in Game.rooms) {
         console.log('Room "'+name+'" has '+Game.rooms[name].energyAvailable+' energy');
     }
-    
+
     var tower = Game.getObjectById('TOWER_ID');
     if (tower) {
         var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
@@ -43,7 +43,8 @@ module.exports.loop = function() {
 
     if (scrapers.length < 4) {
         var newName = 'Scraper' + Game.time;
-        var result = Game.spawns['CHSpawn'].spawnCreep([WORK, WORK, WORK, WORK, MOVE], newName, { memory: { role: 'scraper', harvest_target: 0 } });
+        var bodyArray = [WORK, WORK, WORK, WORK, MOVE]
+        var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'scraper', harvest_target: 0 } });
         if (result == 0) {
             console.log('Spawning new scraper: ' + newName);
         } else {
@@ -53,7 +54,8 @@ module.exports.loop = function() {
 
     if (harvesters.length < 4) {
         var newName = 'Harvester' + Game.time;
-        var result = Game.spawns['CHSpawn'].spawnCreep([WORK, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE], newName, { memory: { role: 'harvester', harvest_target: 0, transfer_target: 0 } });
+        var bodyArray = [WORK, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE]
+        var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'harvester', harvest_target: 0, transfer_target: 0 } });
         if (result == 0) {
             console.log('Spawning new harvester: ' + newName);
         } else {
@@ -63,7 +65,8 @@ module.exports.loop = function() {
 
     if (builders.length < 2) {
         var newName = 'Builder' + Game.time;
-        var result = Game.spawns['CHSpawn'].spawnCreep([WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE], newName, { memory: { role: 'builder' } });
+        var bodyArray = [WORK, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE]
+        var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'builder' } });
         if (result == 0) {
             console.log('Spawning new builder: ' + newName);
         } else {
@@ -73,7 +76,9 @@ module.exports.loop = function() {
 
     if (upgraders.length < 2) {
         var newName = 'Upgrader' + Game.time;
-        var result = Game.spawns['CHSpawn'].spawnCreep([WORK, CARRY, CARRY, CARRY, MOVE, MOVE], newName, { memory: { role: 'upgrader' } });
+        var bodyArray = [WORK, CARRY, CARRY, CARRY, MOVE, MOVE]
+        calcBodyCost.run(bodyArray);
+        var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'upgrader' } });
         if (result == 0) {
             console.log('Spawning new upgrader: ' + newName);
         } else {
