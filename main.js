@@ -76,6 +76,7 @@ module.exports.loop = function() {
             console.log('Upgrader Spawn Result: ' + result)
         }
     }
+    var scrape_counter = 0; 
 
     for (var name in Game.creeps) {
         var creep = Game.creeps[name];
@@ -89,11 +90,14 @@ module.exports.loop = function() {
             roleBuilder.run(creep);
         }
         if (creep.memory.role == 'scraper') {
-            if (scrapers.length % 2 == 0) {
-                roleScraper.run(creep, 0);
+            var scrape_counter += 1;
+            if (scrape_counter % 2 == 0) {
+                creep.memory.harvest_target = 0;
             } else {
-                roleScraper.run(creep, 1);
+                creep.memory.harvest_target = 1;
             }
+            roleScraper.run(creep, creep.memory.harvest_target);
         }
+        creep.say(creep.memory.harvest_target);
     }
 }
