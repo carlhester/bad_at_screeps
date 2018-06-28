@@ -37,9 +37,9 @@ module.exports.loop = function() {
         '\tBuilders: ' + builders.length + 
         '\tUpgraders: ' + upgraders.length);
 
-    if (scrapers.length < 2) {
+    if (scrapers.length < 4) {
         var newName = 'Scraper' + Game.time;
-        var result = Game.spawns['CHSpawn'].spawnCreep([WORK, WORK, MOVE], newName, { memory: { role: 'scraper', harvest_target: 0 } });
+        var result = Game.spawns['CHSpawn'].spawnCreep([WORK, WORK, WORK, WORK, MOVE], newName, { memory: { role: 'scraper', harvest_target: 0 } });
         if (result == 0) {
             console.log('Spawning new scraper: ' + newName);
         } else {
@@ -89,7 +89,7 @@ module.exports.loop = function() {
             roleBuilder.run(creep);
         }
         if (creep.memory.role == 'scraper') {
-            if (scrapers.length < 3) {
+            if (scrapers.length % 2 == 0) {
                 roleScraper.run(creep, 0);
             } else {
                 roleScraper.run(creep, 1);
