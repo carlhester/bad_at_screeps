@@ -97,7 +97,7 @@ module.exports.loop = function() {
                 creep.memory.harvest_target = 1;
             }
             roleScraper.run(creep, creep.memory.harvest_target);
-            creep.say(creep.memory.harvest_target);
+            //creep.say(creep.memory.harvest_target);
 
         }
     }
