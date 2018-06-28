@@ -77,7 +77,7 @@ module.exports.loop = function() {
     if (upgraders.length < 2) {
         var newName = 'Upgrader' + Game.time;
         var bodyArray = [WORK, CARRY, CARRY, CARRY, MOVE, MOVE]
-        calcBodyCost.run(bodyArray);
+        calcBodyCost.calc(bodyArray);
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'upgrader' } });
         if (result == 0) {
             console.log('Spawning new upgrader: ' + newName);
