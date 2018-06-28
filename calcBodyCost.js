@@ -19,4 +19,4 @@ var calcBodyCost = {
     }
 };
 
-module.exports = castBodyCost;
+module.exports = calcBodyCost;
