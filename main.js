@@ -5,7 +5,10 @@ var roleScraper = require('role.scraper');
 
 
 module.exports.loop = function() {
-    console.log(Game.room.energyAvailable);
+    for(var name in Game.rooms) {
+        console.log('Room "'+name+'" has '+Game.rooms[name].energyAvailable+' energy');
+    }
+    
     var tower = Game.getObjectById('TOWER_ID');
     if (tower) {
         var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
