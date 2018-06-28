@@ -28,11 +28,7 @@ var roleHarvester = {
                         structure.structureType == STRUCTURE_TOWER) && structure.energy < structure.energyCapacity;
                 }
             });
-                if(targets.length > 0) {
-                    if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
-                    }
-                } else { 
+                if(targets == 0){
                     var targets = creep.room.find(FIND_STRUCTURES, { 
                         filter: (structure) => { 
                             return (structure.structureType == STRUCTURE_CONTAINER) && 
@@ -40,7 +36,19 @@ var roleHarvester = {
                         }
                     })
 
-                if(targets.length > 0) { 
+
+
+                }
+
+
+                if(targets.length > 0) {
+                    if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
+                    }
+                } else { 
+                    
+
+                /**if(targets.length > 0) { 
                     var result = creep.transfer(targets[creep.memory.transfer_target], RESOURCE_ENERGY)
                     if(result == ERR_NOT_IN_RANGE) { 
                         creep.moveTo(targets[creep.memory.transfer_target], {visualizePathStyle: {stroke: '#ffffff'}});
@@ -51,14 +59,15 @@ var roleHarvester = {
                         }
 
                     }
-                }                
+                }
+                **/                
                 if (creep.carry.energy > 0){ 
                     var result = creep.upgradeController(creep.room.controller)
                     if (result == ERR_NOT_IN_RANGE) {
                         creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
-            }
-            }
+                }
+                }
 
         }
 
