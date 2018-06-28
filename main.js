@@ -6,7 +6,7 @@ var calcBodyCost = require('calcBodyCost')
 
 module.exports.loop = function() {
     for(var name in Game.rooms) {
-        console.log('Room "'+name+'" has '+Game.rooms[name].energyAvailable+' energy');
+        console.log('Room "'+name+'" has '+Game.rooms[name].energyAvailable+'/'+Game.rooms[name].energyCapacityAvailable + ' energy');
     }
 
     var tower = Game.getObjectById('TOWER_ID');
@@ -44,6 +44,8 @@ module.exports.loop = function() {
     if (scrapers.length < 4) {
         var newName = 'Scraper' + Game.time;
         var bodyArray = [WORK, WORK, WORK, WORK, MOVE]
+        calcBodyCost.calc(bodyArray);
+
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'scraper', harvest_target: 0 } });
         if (result == 0) {
             console.log('Spawning new scraper: ' + newName);
@@ -55,6 +57,7 @@ module.exports.loop = function() {
     if (harvesters.length < 4) {
         var newName = 'Harvester' + Game.time;
         var bodyArray = [WORK, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE]
+        calcBodyCost.calc(bodyArray);
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'harvester', harvest_target: 0, transfer_target: 0 } });
         if (result == 0) {
             console.log('Spawning new harvester: ' + newName);
@@ -66,6 +69,7 @@ module.exports.loop = function() {
     if (builders.length < 2) {
         var newName = 'Builder' + Game.time;
         var bodyArray = [WORK, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE]
+        calcBodyCost.calc(bodyArray);
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'builder' } });
         if (result == 0) {
             console.log('Spawning new builder: ' + newName);
