@@ -41,14 +41,14 @@ var roleHarvester = {
 
                     }
                 }                
-
-            }
-            if (creep.carry.energy > 0){ 
-                var result = creep.upgradeController(creep.room.controller)
-                if (result == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
+                if (creep.carry.energy > 0){ 
+                    var result = creep.upgradeController(creep.room.controller)
+                    if (result == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             }
+            }
+            
         }
 
     }
