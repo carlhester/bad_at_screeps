@@ -47,7 +47,7 @@ module.exports.loop = function() {
     const upgraderBody = [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE]
 
 
-    if (scrapers.length < 5) {
+    if (scrapers.length < 4) {
         var newName = 'Scraper' + Game.time;
         var bodyArray = scraperBody;
         calcBodyCost.calc(bodyArray);
