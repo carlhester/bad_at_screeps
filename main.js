@@ -59,7 +59,12 @@ module.exports.loop = function() {
     const upgraderBody= [WORK, CARRY, MOVE, MOVE, MOVE]
     const upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
 
-    if (scrapers.length < 6) {
+    const scraperQuota= 6;
+    const harvesterQuota = 6; 
+    const builderQuota = 2;
+    const upgraderQuota = 6;
+
+    if (scrapers.length < scraperQuota) {
         if (scrapers.length < 2) { 
             var bodyArray = scraperBodyFallback;
         } else { 
@@ -76,7 +81,7 @@ module.exports.loop = function() {
         }
     }
 
-    else if (harvesters.length < 6) {
+    else if (harvesters.length < harvesterQuota) {
         if (harvesters.length < 2) { 
             var bodyArray = harvesterBodyFallback;
         } else { 
@@ -93,7 +98,7 @@ module.exports.loop = function() {
         }
     }
 
-    else if (builders.length < 2) {
+    else if (builders.length < builderQuota) {
         var newName = 'Builder' + Game.time;
         var bodyArray = builderBody; 
         var bodyCost = calcBodyCost.calc(bodyArray);
@@ -105,7 +110,7 @@ module.exports.loop = function() {
         }
     }
 
-    else if (upgraders.length < 6) {
+    else if (upgraders.length < upgraderQuota) {
         if (upgraders.length < 2) { 
             var bodyArray = upgraderBodyFallback;
         } else { 
