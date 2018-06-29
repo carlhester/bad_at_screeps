@@ -79,9 +79,9 @@ module.exports.loop = function() {
         var newName = 'Scraper' + Game.time;
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'scraper', harvest_target: 0 } });
         if (result == 0) {
-            console.log('Spawning new scraper: ' + newName);
+            console.log('Spawning new scraper(' + bodyCost + '): ' + newName);
         } else {
-            console.log('Scraper Spawn Result(' + bodyCost + '): ' + result)
+            console.log('Scraper Spawn Result(' + bodyCost + '): ' + result);
         }
     }
 
@@ -96,9 +96,9 @@ module.exports.loop = function() {
         var newName = 'Harvester' + Game.time;
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'harvester', harvest_target: 0, transfer_target: 0 } });
         if (result == 0) {
-            console.log('Spawning new harvester: ' + newName);
+            console.log('Spawning new harvester(' + bodyCost + '): ' + newName);
         } else {
-            console.log('Harvester Spawn Result(' + bodyCost + '): ' + result)
+            console.log('Harvester Spawn Result(' + bodyCost + '): ' + result);
         }
     }
 
@@ -108,9 +108,9 @@ module.exports.loop = function() {
         var bodyCost = calcBodyCost.calc(bodyArray);
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'builder' } });
         if (result == 0) {
-            console.log('Spawning new builder: ' + newName);
+            console.log('Spawning new builder(' + bodyCost +'): ' + newName);
         } else {
-            console.log('Builder Spawn Result(' + bodyCost + '): ' + result)
+            console.log('Builder Spawn Result(' + bodyCost + '): ' + result);
         }
     }
 
@@ -124,9 +124,9 @@ module.exports.loop = function() {
         var newName = 'Upgrader' + Game.time;
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'upgrader' } });
         if (result == 0) {
-            console.log('Spawning new upgrader: ' + newName);
+            console.log('Spawning new upgrader(' + bodyCost + '): '+ newName);
         } else {
-            console.log('Upgrader Spawn Result(' + bodyCost + '): '  + result)
+            console.log('Upgrader Spawn Result(' + bodyCost + '): '  + result);
         }
     }
     var scrape_counter = 0; 
