@@ -5,13 +5,14 @@ var roleScraper = require('role.scraper');
 var calcBodyCost = require('calcBodyCost')
 
 module.exports.loop = function() {
-    //var controlLevel = Game.rooms['W37N57'].controller['level']
     
     for(var name in Game.rooms) {
         var controlLevel = Game.rooms[name].controller['level']
         console.log('Room "'+name+'" has '+Game.rooms[name].energyAvailable+'/'+Game.rooms[name].energyCapacityAvailable + ' energy' + 
         ' and level: ' + controlLevel);
     }
+    
+    var controlLevel = Game.rooms['W37N57'].controller['level']
 
     var tower = Game.getObjectById('TOWER_ID');
     if (tower) {
@@ -44,7 +45,7 @@ module.exports.loop = function() {
         var builderBody = [WORK, CARRY, MOVE]
         var upgraderBody= [WORK, CARRY, MOVE, MOVE, MOVE]
         var upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
-    } else {  
+    } else if (controlLevel == 2) {  
         var scraperBody = [WORK, WORK, WORK, WORK, WORK, MOVE]
         var scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
         var harvesterBody = [WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
@@ -52,8 +53,16 @@ module.exports.loop = function() {
         var builderBody = [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
         var upgraderBody = [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE]
         var upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
+    } else if (controlLevel == 3) { 
+        var scraperBody = [WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE]
+        var scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
+        var harvesterBody = [WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE]
+        var harvesterBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
+        var builderBody = [WORK, WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE]
+        var upgraderBody = [WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
+        var upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
     } 
-
+ 
 
     const scraperQuota= 6;
     const harvesterQuota = 6; 
