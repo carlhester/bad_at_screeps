@@ -62,7 +62,7 @@ module.exports.loop = function() {
         }
     }
 
-    if (harvesters.length < 6) {
+    else if (harvesters.length < 6) {
         var newName = 'Harvester' + Game.time;
         var bodyArray = harvesterBody;
         calcBodyCost.calc(bodyArray);
@@ -74,7 +74,7 @@ module.exports.loop = function() {
         }
     }
 
-    if (builders.length < 2) {
+    else if (builders.length < 2) {
         var newName = 'Builder' + Game.time;
         var bodyArray = builderBody; 
         calcBodyCost.calc(bodyArray);
@@ -86,7 +86,7 @@ module.exports.loop = function() {
         }
     }
 
-    if (upgraders.length < 6) {
+    else if (upgraders.length < 6) {
         var newName = 'Upgrader' + Game.time;
         var bodyArray = upgraderBody;
         calcBodyCost.calc(bodyArray);
