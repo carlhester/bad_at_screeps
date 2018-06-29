@@ -5,8 +5,12 @@ var roleScraper = require('role.scraper');
 var calcBodyCost = require('calcBodyCost')
 
 module.exports.loop = function() {
+    //var controlLevel = Game.rooms['W37N57'].controller['level']
+    
     for(var name in Game.rooms) {
-        console.log('Room "'+name+'" has '+Game.rooms[name].energyAvailable+'/'+Game.rooms[name].energyCapacityAvailable + ' energy');
+        var controlLevel = Game.rooms[name].controller['level']
+        console.log('Room "'+name+'" has '+Game.rooms[name].energyAvailable+'/'+Game.rooms[name].energyCapacityAvailable + ' energy' + 
+        ' and level: ' + controlLevel);
     }
 
     var tower = Game.getObjectById('TOWER_ID');
@@ -31,7 +35,6 @@ module.exports.loop = function() {
         }
     }
 
-    var controlLevel = Game.rooms['W37N57'].controller['level']
    
     if (controlLevel == 1) {  
         var scraperBody = [WORK, WORK, MOVE, MOVE]
