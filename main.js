@@ -45,7 +45,7 @@ module.exports.loop = function() {
         var builderBody = [WORK, CARRY, MOVE]
         var upgraderBody= [WORK, CARRY, MOVE, MOVE, MOVE]
         var upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
-    } else if (controlLevel == 2) {  
+    } else {  
         var scraperBody = [WORK, WORK, WORK, WORK, WORK, MOVE]
         var scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
         var harvesterBody = [WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
@@ -53,7 +53,8 @@ module.exports.loop = function() {
         var builderBody = [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
         var upgraderBody = [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE]
         var upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
-    } else if (controlLevel == 3) { 
+    } 
+    /** else if (controlLevel == 3) { 
         var scraperBody = [WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE]
         var scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
         var harvesterBody = [WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE]
@@ -62,6 +63,7 @@ module.exports.loop = function() {
         var upgraderBody = [WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
         var upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
     } 
+    **/
  
 
     const scraperQuota= 6;
