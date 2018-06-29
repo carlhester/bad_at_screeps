@@ -41,6 +41,7 @@ module.exports.loop = function() {
         '\tBuilders: ' + builders.length + 
         '\tUpgraders: ' + upgraders.length);
 
+    /** 
     const scraperBody = [WORK, WORK, WORK, WORK, WORK, MOVE]
     const scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
     const harvesterBody = [WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
@@ -48,7 +49,15 @@ module.exports.loop = function() {
     const builderBody = [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
     const upgraderBody = [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE]
     const upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
+    **/
 
+    const scraperBody = [WORK, WORK, MOVE, MOVE]
+    const scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
+    const harvesterBody = [WORK, CARRY, MOVE, MOVE, MOVE]
+    const harvesterBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
+    const builderBody = [WORK, CARRY, MOVE]
+    const upgraderBody= [WORK, CARRY, MOVE, MOVE, MOVE]
+    const upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
 
     if (scrapers.length < 6) {
         if (scrapers.length < 2) { 
