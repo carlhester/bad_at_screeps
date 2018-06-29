@@ -35,20 +35,20 @@ module.exports.loop = function() {
    
     if (controlLevel == 1) {  
         var scraperBody = [WORK, WORK, MOVE, MOVE]
-        const scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
-        const harvesterBody = [WORK, CARRY, MOVE, MOVE, MOVE]
-        const harvesterBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
-        const builderBody = [WORK, CARRY, MOVE]
-        const upgraderBody= [WORK, CARRY, MOVE, MOVE, MOVE]
-        const upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
+        var scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
+        var harvesterBody = [WORK, CARRY, MOVE, MOVE, MOVE]
+        var harvesterBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
+        var builderBody = [WORK, CARRY, MOVE]
+        var upgraderBody= [WORK, CARRY, MOVE, MOVE, MOVE]
+        var upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
     } else {  
         var scraperBody = [WORK, WORK, WORK, WORK, WORK, MOVE]
-        const scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
-        const harvesterBody = [WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
-        const harvesterBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
-        const builderBody = [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
-        const upgraderBody = [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE]
-        const upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
+        var scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
+        var harvesterBody = [WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
+        var harvesterBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
+        var builderBody = [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
+        var upgraderBody = [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE]
+        var upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
     } 
 
 
