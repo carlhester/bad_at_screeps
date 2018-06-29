@@ -6,10 +6,13 @@ var roleHarvester = {
             //const target = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES);
             var piles = creep.room.find(FIND_DROPPED_RESOURCES);
             var largestPile = 0 
-            for (pile in piles){
-                if (piles[pile].energy > largestPile) { 
-                    target = piles[pile];
-                    largestPile = piles[pile].energy;
+            
+            if (piles) { 
+                for (pile in piles){
+                    if (piles[pile].energy > largestPile) { 
+                        target = piles[pile];
+                        largestPile = piles[pile].energy;
+                    }
                 }
             }
 
@@ -19,8 +22,7 @@ var roleHarvester = {
                     creep.moveTo(target);
                 }
             }    
-        }
-        else {
+        } else {
             var targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {
                     return (structure.structureType == STRUCTURE_EXTENSION ||
