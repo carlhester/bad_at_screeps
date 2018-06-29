@@ -62,7 +62,7 @@ module.exports.loop = function() {
     console.log('Scrapers: ' + scrapers.length + '/' + scraperQuota + 
         '\tHarvesters: ' + harvesters.length +  '/' + harvesterQuota + 
         '\tBuilders: ' + builders.length +  '/' + builderQuota + 
-        '\tUpgraders: ' + upgraders.length + '/' + upgraderQuota + );
+        '\tUpgraders: ' + upgraders.length + '/' + upgraderQuota);
 
 
     if (scrapers.length < scraperQuota) {
