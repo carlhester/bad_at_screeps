@@ -44,7 +44,7 @@ module.exports.loop = function() {
     //const scraperBody = [WORK, WORK, WORK, WORK, WORK, MOVE]
     const scraperBody = [WORK, WORK, MOVE]
     //const harvesterBody = [WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
-    const harvesterBody = [WORK, CARRY, MOVE]
+    const harvesterBody = [WORK, CARRY, MOVE, MOVE, MOVE]
     const builderBody = [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
     const upgraderBody = [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE]
 
