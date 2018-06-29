@@ -41,13 +41,15 @@ module.exports.loop = function() {
         '\tBuilders: ' + builders.length + 
         '\tUpgraders: ' + upgraders.length);
 
-    const scraperBody = [WORK, WORK, WORK, WORK, WORK, MOVE]
-    const harvesterBody = [WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
+    //const scraperBody = [WORK, WORK, WORK, WORK, WORK, MOVE]
+    const scraperBody = [WORK, WORK, MOVE]
+    //const harvesterBody = [WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
+    const harvesterBody = [WORK, CARRY, MOVE]
     const builderBody = [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
     const upgraderBody = [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE]
 
 
-    if (scrapers.length < 6) {
+    if (scrapers.length < 1) {
         var newName = 'Scraper' + Game.time;
         var bodyArray = scraperBody;
         calcBodyCost.calc(bodyArray);
