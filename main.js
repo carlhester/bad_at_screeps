@@ -31,16 +31,6 @@ module.exports.loop = function() {
         }
     }
 
-    var scrapers = _.filter(Game.creeps, (creep) => creep.memory.role == 'scraper');
-    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-    var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
-    var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-
-    console.log('Scrapers: ' + scrapers.length + 
-        '\tHarvesters: ' + harvesters.length + 
-        '\tBuilders: ' + builders.length + 
-        '\tUpgraders: ' + upgraders.length);
-
     /** 
     const scraperBody = [WORK, WORK, WORK, WORK, WORK, MOVE]
     const scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
@@ -63,6 +53,17 @@ module.exports.loop = function() {
     const harvesterQuota = 6; 
     const builderQuota = 2;
     const upgraderQuota = 6;
+    
+    var scrapers = _.filter(Game.creeps, (creep) => creep.memory.role == 'scraper');
+    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+    var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
+    var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
+
+    console.log('Scrapers: ' + scrapers.length + '/' + scraperQuota + 
+        '\tHarvesters: ' + harvesters.length +  '/' + harvesterQuota + 
+        '\tBuilders: ' + builders.length +  '/' + builderQuota + 
+        '\tUpgraders: ' + upgraders.length + '/' + upgraderQuota + );
+
 
     if (scrapers.length < scraperQuota) {
         if (scrapers.length < 2) { 
