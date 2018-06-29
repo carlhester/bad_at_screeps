@@ -41,19 +41,24 @@ module.exports.loop = function() {
         '\tBuilders: ' + builders.length + 
         '\tUpgraders: ' + upgraders.length);
 
-    //const scraperBody = [WORK, WORK, WORK, WORK, WORK, MOVE]
-    const scraperBody = [WORK, WORK, MOVE]
-    //const harvesterBody = [WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
-    const harvesterBody = [WORK, CARRY, MOVE, MOVE, MOVE]
+    const scraperBody = [WORK, WORK, WORK, WORK, WORK, MOVE]
+    const scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
+    const harvesterBody = [WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
+    const harvesterBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
     const builderBody = [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
     const upgraderBody = [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE]
+    const upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
 
 
-    if (scrapers.length < 1) {
-        var newName = 'Scraper' + Game.time;
-        var bodyArray = scraperBody;
+    if (scrapers.length < 6) {
+        if (scrapers.length < 2) { 
+            var bodyArray = scraperBodyFallback;
+        } else { 
+            var bodyArray = scraperBody;
+        } 
         calcBodyCost.calc(bodyArray);
-
+        
+        var newName = 'Scraper' + Game.time;
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'scraper', harvest_target: 0 } });
         if (result == 0) {
             console.log('Spawning new scraper: ' + newName);
@@ -63,9 +68,14 @@ module.exports.loop = function() {
     }
 
     else if (harvesters.length < 6) {
-        var newName = 'Harvester' + Game.time;
-        var bodyArray = harvesterBody;
+        if (harvesters.length < 2) { 
+            var bodyArray = harvesterBodyFallback;
+        } else { 
+            var bodyArray = harvesterBody;
+        } 
+
         calcBodyCost.calc(bodyArray);
+        var newName = 'Harvester' + Game.time;
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'harvester', harvest_target: 0, transfer_target: 0 } });
         if (result == 0) {
             console.log('Spawning new harvester: ' + newName);
@@ -87,9 +97,13 @@ module.exports.loop = function() {
     }
 
     else if (upgraders.length < 6) {
-        var newName = 'Upgrader' + Game.time;
-        var bodyArray = upgraderBody;
+        if (upgraders.length < 2) { 
+            var bodyArray = upgraderBodyFallback;
+        } else { 
+            var bodyArray = upgraderBody;
+        }  
         calcBodyCost.calc(bodyArray);
+        var newName = 'Upgrader' + Game.time;
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'upgrader' } });
         if (result == 0) {
             console.log('Spawning new upgrader: ' + newName);
