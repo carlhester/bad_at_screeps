@@ -9,13 +9,13 @@ var calcBodyCost = {
             } else if (bodyArray[bodyPart] == CARRY) { 
                 bodyCost += 50;
             } else if (bodyArray[bodyPart] == WORK) { 
-                bodyCost += 100
+                bodyCost += 100;
             }
 
 
         }
-        console.log('BodyCost: ' + bodyCost)
-
+        //console.log('BodyCost: ' + bodyCost)
+        return(bodyCost);
     }
 };
 

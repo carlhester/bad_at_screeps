@@ -56,14 +56,14 @@ module.exports.loop = function() {
         } else { 
             var bodyArray = scraperBody;
         } 
-        calcBodyCost.calc(bodyArray);
+        var bodyCost = calcBodyCost.calc(bodyArray);
         
         var newName = 'Scraper' + Game.time;
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'scraper', harvest_target: 0 } });
         if (result == 0) {
             console.log('Spawning new scraper: ' + newName);
         } else {
-            console.log('Scraper Spawn Result: ' + result)
+            console.log('Scraper Spawn Result(' + bodyCost + '): ' + result)
         }
     }
 
@@ -74,25 +74,25 @@ module.exports.loop = function() {
             var bodyArray = harvesterBody;
         } 
 
-        calcBodyCost.calc(bodyArray);
+        var bodyCost = calcBodyCost.calc(bodyArray);
         var newName = 'Harvester' + Game.time;
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'harvester', harvest_target: 0, transfer_target: 0 } });
         if (result == 0) {
             console.log('Spawning new harvester: ' + newName);
         } else {
-            console.log('Harvester Spawn Result: ' + result)
+            console.log('Harvester Spawn Result(' + bodyCost + '): ' + result)
         }
     }
 
     else if (builders.length < 2) {
         var newName = 'Builder' + Game.time;
         var bodyArray = builderBody; 
-        calcBodyCost.calc(bodyArray);
+        var bodyCost = calcBodyCost.calc(bodyArray);
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'builder' } });
         if (result == 0) {
             console.log('Spawning new builder: ' + newName);
         } else {
-            console.log('Builder Spawn Result: ' + result)
+            console.log('Builder Spawn Result(' + bodyCost + '): ' + result)
         }
     }
 
@@ -102,13 +102,13 @@ module.exports.loop = function() {
         } else { 
             var bodyArray = upgraderBody;
         }  
-        calcBodyCost.calc(bodyArray);
+        var bodyCost = calcBodyCost.calc(bodyArray);
         var newName = 'Upgrader' + Game.time;
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'upgrader' } });
         if (result == 0) {
             console.log('Spawning new upgrader: ' + newName);
         } else {
-            console.log('Upgrader Spawn Result: ' + result)
+            console.log('Upgrader Spawn Result(' + bodyCost + '): '  + result)
         }
     }
     var scrape_counter = 0; 
