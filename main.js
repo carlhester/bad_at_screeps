@@ -34,7 +34,7 @@ module.exports.loop = function() {
     var controlLevel = Game.rooms['W37N57'].controller['level']
    
     if (controlLevel == 1) {  
-        const scraperBody = [WORK, WORK, MOVE, MOVE]
+        var scraperBody = [WORK, WORK, MOVE, MOVE]
         const scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
         const harvesterBody = [WORK, CARRY, MOVE, MOVE, MOVE]
         const harvesterBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
@@ -42,7 +42,7 @@ module.exports.loop = function() {
         const upgraderBody= [WORK, CARRY, MOVE, MOVE, MOVE]
         const upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
     } else {  
-        const scraperBody = [WORK, WORK, WORK, WORK, WORK, MOVE]
+        var scraperBody = [WORK, WORK, WORK, WORK, WORK, MOVE]
         const scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
         const harvesterBody = [WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
         const harvesterBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
