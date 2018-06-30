@@ -7,6 +7,8 @@ var roleInvader = {
             creep.moveTo(pos);
         } else if (creep.room.name == 'W37N58') { 
             console.log(creep.name + ' now in ' + creep.room.name);
+            const pos = new RoomPosition(8, 33, 'W37N58');
+            creep.moveTo(pos);
         }
 
 
