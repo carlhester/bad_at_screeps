@@ -2,7 +2,8 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleScraper = require('role.scraper');
-var calcBodyCost = require('calcBodyCost')
+var roleInvader = require('role.invader');
+var calcBodyCost = require('calcBodyCost');
 
 module.exports.loop = function() {
     
@@ -53,6 +54,8 @@ module.exports.loop = function() {
         var builderBody = [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
         var upgraderBody = [WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE]
         var upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
+        var invaderBody = [TOUGH, TOUGH, ATTACK, ATTACK, ATTACK, MOVE, MOVE, MOVE, MOVE, MOVE]
+
     } 
     /** else if (controlLevel == 3) { 
         var scraperBody = [WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE]
@@ -70,16 +73,20 @@ module.exports.loop = function() {
     const harvesterQuota = 10; 
     const builderQuota = 2;
     const upgraderQuota = 4;
+    const invaderQuota = 1;
+
     
     var scrapers = _.filter(Game.creeps, (creep) => creep.memory.role == 'scraper');
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
+    var invaders = _.filter(Game.creeps, (creep) => creep.memory.role == 'invader');
 
     console.log('Scrapers: ' + scrapers.length + '/' + scraperQuota + 
         '\tHarvesters: ' + harvesters.length +  '/' + harvesterQuota + 
         '\tBuilders: ' + builders.length +  '/' + builderQuota + 
-        '\tUpgraders: ' + upgraders.length + '/' + upgraderQuota);
+        '\tUpgraders: ' + upgraders.length + '/' + upgraderQuota + 
+        '\tInvaders: ' + invaders.length + '/' + invaderQuota);
 
 
     if (scrapers.length < scraperQuota) {
@@ -142,6 +149,16 @@ module.exports.loop = function() {
         } else {
             console.log('Upgrader Spawn Result(' + bodyCost + '): '  + result);
         }
+    } else if ((invaders.length < invaderQuota) && (controlLevel > 1)) { 
+        var newName = 'Invader' + Game.time;
+        var bodyArray = invaderBody;
+        var bodyCost = calcBodyCost.calc(bodyArray)
+        var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'invader' } });
+        if (result == 0) {
+            console.log('Spawning new invader(' + bodyCost + '): '+ newName);
+        } else {
+            console.log('Upgrader Spawn Result(' + bodyCost + '): '  + result);
+        }
     }
     var scrape_counter = 0; 
 
@@ -155,6 +172,9 @@ module.exports.loop = function() {
         }
         if (creep.memory.role == 'builder') {
             roleBuilder.run(creep);
+        }
+        if (creep.memory.role == 'invader') {
+            roleInvader.run(creep);
         }
         if (creep.memory.role == 'scraper') {
             scrape_counter += 1;
