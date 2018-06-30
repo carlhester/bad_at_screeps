@@ -19,9 +19,14 @@ var roleInvader = {
 
         }  else if (creep.room.name == 'W38N58') { 
             if(creep.room.controller) {
-                if(creep.claimController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                var try_claim = creep.claimController(creep.room.controller);
+                console.log('try to claim: ' + try_claim)
+                if(try_claim == ERR_NOT_IN_RANGE) {
                     creep.moveTo(creep.room.controller);
                  }
+            }
+            else { 
+                console.log('didnt find controller');
             }
         } 
     }
