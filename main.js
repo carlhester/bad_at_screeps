@@ -157,7 +157,7 @@ module.exports.loop = function() {
         if (result == 0) {
             console.log('Spawning new invader(' + bodyCost + '): '+ newName);
         } else {
-            console.log('Upgrader Spawn Result(' + bodyCost + '): '  + result);
+            console.log('Invader Spawn Result(' + bodyCost + '): '  + result);
         }
     }
     var scrape_counter = 0; 
