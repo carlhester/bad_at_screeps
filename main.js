@@ -164,6 +164,10 @@ module.exports.loop = function() {
 
     for (var name in Game.creeps) {
         var creep = Game.creeps[name];
+        if ((creep.ticksToLivenumber < 2) && (creep.carry.energy > 0)){ 
+            creep.drop(RESOURCE_ENERGY);
+        }
+
         if (creep.memory.role == 'harvester') {
             roleHarvester.run(creep);
         }
