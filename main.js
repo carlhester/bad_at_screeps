@@ -72,7 +72,7 @@ module.exports.loop = function() {
     const scraperQuota = 4;
     const harvesterQuota = 10; 
     const builderQuota = 2;
-    const upgraderQuota = 2;
+    const upgraderQuota = 0;
     const invaderQuota = 0;
 
     
