@@ -16,7 +16,7 @@ var roleHarvester = {
                 }
             }
 
-            if (nearestPile.energy > 100) { 
+            if (nearestPile && nearestPile.energy > 100) { 
                 target = nearestPile;
             }
 
