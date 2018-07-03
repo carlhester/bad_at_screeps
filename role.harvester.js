@@ -3,7 +3,7 @@ var roleHarvester = {
     /** @param {Creep} creep **/
     run: function(creep) {
         if(creep.carry.energy == 0) {
-            const nearestPile = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES);
+            var nearestPile = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES);
             var piles = creep.room.find(FIND_DROPPED_RESOURCES);
             var largestPile = 0 
             
