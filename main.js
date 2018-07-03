@@ -97,7 +97,19 @@ module.exports.loop = function() {
         } 
         var bodyCost = calcBodyCost.calc(bodyArray);
         
-        if (scrapers.length % 2 == 0) {
+        var scraper0_count = 0
+        var scraper1_count = 0 
+
+        for (scraper in scrapers) { 
+            if (scrapers[scraper].memory.harvest_target == 0) { 
+                scraper0_count += 1
+            } else {
+                scraper1_count += 1 
+            }
+            
+        }
+
+        if (scraper0_count < scraper1_count) {
             harvest_target = 1;
         } else {
             harvest_target = 0;
