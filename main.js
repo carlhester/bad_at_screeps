@@ -97,8 +97,25 @@ module.exports.loop = function() {
         } 
         var bodyCost = calcBodyCost.calc(bodyArray);
         
-        var newName = 'Scraper' + Game.time;
-        var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'scraper', harvest_target: 0 } });
+        if (scrapers.length % 2 == 0) {
+            harvest_target = 1;
+        } else {
+            harvest_target = 0;
+        }
+        
+        var newName = 'Scraper-' + harvest_target + '-' + Game.time;
+        var result = Game.spawns['CHSpawn'].spawnCreep(
+            bodyArray, 
+            newName, 
+            { 
+                memory: 
+                { 
+                    role: 'scraper', 
+                    harvest_target: harvest_target 
+                } 
+            }
+            );
+
         if (result == 0) {
             console.log('Spawning new scraper(' + bodyCost + '): ' + newName);
         } else {
@@ -160,7 +177,6 @@ module.exports.loop = function() {
             console.log('Invader Spawn Result(' + bodyCost + '): '  + result);
         }
     }
-    var scrape_counter = 0; 
 
     for (var name in Game.creeps) {
         var creep = Game.creeps[name];
@@ -181,15 +197,7 @@ module.exports.loop = function() {
             roleInvader.run(creep);
         }
         if (creep.memory.role == 'scraper') {
-            scrape_counter += 1;
-            if (scrape_counter % 2 == 0) {
-                creep.memory.harvest_target = 1;
-            } else {
-                creep.memory.harvest_target = 0;
-            }
-            roleScraper.run(creep, creep.memory.harvest_target);
-            //creep.say(creep.memory.harvest_target);
-
+            roleScraper.run(creep);
         }
     }
 }
