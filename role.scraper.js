@@ -18,7 +18,6 @@ var roleScraper = {
             } else {
                 scraper1_count += 1
             }
-
         }
 
         if (scraper0_count < scraper1_count) {

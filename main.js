@@ -15,6 +15,7 @@ module.exports.loop = function() {
 
     var controlLevel = Game.rooms['W37N57'].controller['level']
 
+
     var tower = Game.getObjectById('TOWER_ID');
     if (tower) {
         var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
@@ -93,7 +94,7 @@ module.exports.loop = function() {
         } else {
             var bodyArray = scraperBody;
         }
-        
+
         var harvest_target = roleScraper.getNextTarget(scrapers)
 
         var newName = 'Scraper-' + harvest_target + '-' + Game.time;

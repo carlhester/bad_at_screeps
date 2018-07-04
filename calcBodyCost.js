@@ -4,18 +4,18 @@ var calcBodyCost = {
     calc: function(bodyArray) {
         bodyCost = 0;
         for (bodyPart in bodyArray) {
-            if (bodyArray[bodyPart] == MOVE) { 
+            if (bodyArray[bodyPart] == MOVE) {
                 bodyCost += 50;
-            } else if (bodyArray[bodyPart] == CARRY) { 
+            } else if (bodyArray[bodyPart] == CARRY) {
                 bodyCost += 50;
-            } else if (bodyArray[bodyPart] == WORK) { 
+            } else if (bodyArray[bodyPart] == WORK) {
                 bodyCost += 100;
             }
 
 
         }
         //console.log('BodyCost: ' + bodyCost)
-        return(bodyCost);
+        return (bodyCost);
     }
 };
 
