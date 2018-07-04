@@ -31,7 +31,7 @@ var roleBuilder = {
                     }
                 }
 
-
+            }
 
         } else {
             const target = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES);
