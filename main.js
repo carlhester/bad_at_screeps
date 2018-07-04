@@ -81,11 +81,11 @@ module.exports.loop = function() {
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     var invaders = _.filter(Game.creeps, (creep) => creep.memory.role == 'invader');
 
-    console.log('Scrapers: ' + scrapers.length + '/' + scraperQuota +
-        '\tHarvesters: ' + harvesters.length + '/' + harvesterQuota +
-        '\tBuilders: ' + builders.length + '/' + builderQuota +
-        '\tUpgraders: ' + upgraders.length + '/' + upgraderQuota +
-        '\tInvaders: ' + invaders.length + '/' + invaderQuota);
+    console.log('Scrapers: ${scrapers.length}/${scraperQuota}' + 
+        '\tHarvesters: ${harvesters.length}/${harvesterQuota}' +  
+        '\tBuilders: ${builders.length}/${builderQuota}' +  
+        '\tUpgraders: ${upgraders.length}/${upgraderQuota}' +  
+        '\tInvaders: ${invaders.length}/${invaderQuota}');
 
 
     if (scrapers.length < scraperQuota) {
