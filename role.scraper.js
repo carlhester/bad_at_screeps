@@ -20,7 +20,7 @@ var roleScraper = {
             }
         }
 
-        if (scraper0_count < scraper1_count) {
+        if (scraper0_count > scraper1_count) {
             return 1;
         } else {
             return 0;
