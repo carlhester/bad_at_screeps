@@ -6,7 +6,8 @@ var roleScraper = {
         if (creep.harvest(sources[creep.memory.harvest_target]) == ERR_NOT_IN_RANGE) {
             creep.moveTo(sources[creep.memory.harvest_target], { visualizePathStyle: { stroke: '#ffaa00' } });
         }
-    }
+    };
+
     getNextTarget: function(scrapers) {
         var scraper0_count = 0
         var scraper1_count = 0
