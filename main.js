@@ -55,7 +55,7 @@ module.exports.loop = function() {
         var builderBody = [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
         var upgraderBody = [WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE]
         var upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
-        var invaderBody = [TOUGH, TOUGH, ATTACK, ATTACK, ATTACK, CLAIM, MOVE, MOVE, MOVE, MOVE, MOVE]
+        var invaderBody = [TOUGH, TOUGH, ATTACK, ATTACK, ATTACK, CLAIM, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
 
     }
     /** else if (controlLevel == 3) { 
