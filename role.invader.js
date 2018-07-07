@@ -17,7 +17,7 @@ const roleInvader = {
         creep.moveTo(pos);
       }
     } else if (creep.room.name == 'W38N58') {
-      console.log(`mine? ${creep.controller.my}`)
+      console.log(`mine? ${creep.room.controller.my}`)
       if (creep.room.controller) {
         const try_claim = creep.claimController(creep.room.controller);
         console.log(`try to claim: ${try_claim}`);
