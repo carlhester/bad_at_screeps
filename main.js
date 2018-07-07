@@ -15,21 +15,26 @@ module.exports.loop = function() {
 
     var controlLevel = Game.rooms['W37N57'].controller['level']
 
+    var towers = room.findroom.find(FIND_STRUCTURES, {
+        filter: (i) => i.structureType == STRUCTURE_TOWER
+    });
 
-    var tower = Game.getObjectById('TOWER_ID');
-    if (tower) {
-        var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-            filter: (structure) => structure.hits < structure.hitsMax
-        });
-        if (closestDamagedStructure) {
-            tower.repair(closestDamagedStructure);
-        }
+    for tower in towers { 
+        if (towers[tower]) {
+            var closestDamagedStructure = towers[tower].pos.findClosestByRange(FIND_STRUCTURES, {
+                filter: (structure) => structure.hits < structure.hitsMax
+            });
+            if (closestDamagedStructure) {
+                towers[tower].repair(closestDamagedStructure);
+            }
 
-        var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-        if (closestHostile) {
-            tower.attack(closestHostile);
+            var closestHostile = towers[tower].pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+            if (closestHostile) {
+                towers[tower].attack(closestHostile);
+            }
         }
     }
+
 
     for (var name in Memory.creeps) {
         if (!Game.creeps[name]) {
