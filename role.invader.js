@@ -17,24 +17,27 @@ const roleInvader = {
         creep.moveTo(pos);
       }
     } else if (creep.room.name == 'W38N58') {
-      console.log(`mine? ${creep.room.controller.my}`)
-      if (creep.room.controller) {
+      //console.log(`mine? ${creep.room.controller.my}`)
+      if (!creep.room.controller.my) {
         const try_claim = creep.claimController(creep.room.controller);
         console.log(`try to claim: ${try_claim}`);
         if (try_claim == ERR_NOT_IN_RANGE) {
           creep.moveTo(creep.room.controller);
-        } else if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(creep.room.controller, { visualizePathStyle: { stroke: '#ffffff' } });
-        } else {
-          const sources = creep.room.find(FIND_SOURCES);
-          if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' } });
-          }
         }
-      } else {
-        console.log('didnt find controller');
+      } else if (creep.carry.energy == 0) { 
+        const sources = creep.room.find(FIND_SOURCES);
+        if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' } });
+        }
+
+      } else if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(creep.room.controller, { visualizePathStyle: { stroke: '#ffffff' } });
+        } 
+          
+        
+    } else {
+      console.log('Not in W38N58');
       }
-    }
   },
 };
 
