@@ -17,12 +17,11 @@ const roleInvader = {
         creep.moveTo(pos);
       }
     } else if (creep.room.name == 'W38N58') {
-      // const pos = new RoomPosition(39, 22, 'W38N58');
-      // creep.moveTo(pos);
+      console.log(`mine? ${game.controller.my}`)
       if (creep.room.controller) {
         const try_claim = creep.claimController(creep.room.controller);
         console.log(`try to claim: ${try_claim}`);
-        if (try_claim == ERR_NOT_IN_RANGE || try_claim == ERR_GCL_NOT_ENOUGH) {
+        if (try_claim == ERR_NOT_IN_RANGE) {
           creep.moveTo(creep.room.controller);
         } else if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
           creep.moveTo(creep.room.controller, { visualizePathStyle: { stroke: '#ffffff' } });
