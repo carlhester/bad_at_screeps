@@ -20,17 +20,19 @@ const roleInvader = {
       //console.log(`mine? ${creep.room.controller.my}`)
       if (!creep.room.controller.my) {
         const try_claim = creep.claimController(creep.room.controller);
-        console.log(`try to claim: ${try_claim}`);
+        console.log(`${creep.room.name} is not mine.  Trying to claim: ${try_claim}`);
         if (try_claim == ERR_NOT_IN_RANGE) {
           creep.moveTo(creep.room.controller);
         }
-      } else if (creep.carry.energy == 0) { 
+      } else if (creep.carry.energy == 0) {
+        console.log(`Carrying ${creep.carry.energy}, better harvest`) 
         const sources = creep.room.find(FIND_SOURCES);
         if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
           creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' } });
         }
 
       } else if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+          console.log(`Tried to upgrade ${creep.room.controller}.  Need to get closer.`) 
           creep.moveTo(creep.room.controller, { visualizePathStyle: { stroke: '#ffffff' } });
         } 
           
