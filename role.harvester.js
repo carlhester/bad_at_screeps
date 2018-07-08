@@ -41,7 +41,7 @@ var roleHarvester = {
                 })
             }
             if (targets.length > 0) {
-                if (harvesters < 4) { targets[0] = creep.room.findClosestByRange(FIND_STRUCTURES, {
+                if (harvesters < 4) { targets[0] = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                 filter: (structure) => {
                     return (structure.structureType == STRUCTURE_EXTENSION ||
                         structure.structureType == STRUCTURE_SPAWN ||
