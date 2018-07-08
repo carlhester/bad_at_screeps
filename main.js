@@ -13,9 +13,8 @@ module.exports.loop = function() {
         var controlLevel = Game.rooms[name].controller['level']
         console.log(`Room ${name} has ${Game.rooms[name].energyAvailable}/${Game.rooms[name].energyCapacityAvailable} energy and level: ${controlLevel}`);
     
-    //var room = Game.rooms['W37N57'];
-        var towers = Game.rooms[name].find(FIND_STRUCTURES, { filter: (i) => i.structureType == STRUCTURE_TOWER });
-        console.log(`Room ${name} : ${towers}`)
+    
+        var towers = Game.rooms[name].find(FIND_STRUCTURES, { filter: (i) => i.structureType == STRUCTURE_TOWER });   
         roleTower.run(towers) 
     } 
     
