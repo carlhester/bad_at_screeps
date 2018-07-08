@@ -14,7 +14,7 @@ module.exports.loop = function() {
     }
 
     var controlLevel = Game.rooms['W37N57'].controller['level']
-
+    /**
     var towers = room.find(FIND_STRUCTURES, {
         filter: (i) => i.structureType == STRUCTURE_TOWER
     });
@@ -34,7 +34,7 @@ module.exports.loop = function() {
             }
         }
     }
-
+    **/
 
     for (var name in Memory.creeps) {
         if (!Game.creeps[name]) {
