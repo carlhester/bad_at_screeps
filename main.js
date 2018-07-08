@@ -14,6 +14,7 @@ module.exports.loop = function() {
     
     //var room = Game.rooms['W37N57'];
         var towers = Game.rooms[name].find(FIND_STRUCTURES, { filter: (i) => i.structureType == STRUCTURE_TOWER });
+        console.log(`Room ${name} : ${towers}`)
         roleTower.run(towers) 
     } 
     
