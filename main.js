@@ -1,9 +1,10 @@
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
+var calcBodyCost = require('calcBodyCost');
 var roleBuilder = require('role.builder');
 var roleScraper = require('role.scraper');
 var roleInvader = require('role.invader');
-var calcBodyCost = require('calcBodyCost');
+var roleTower = require('role.tower');
 
 module.exports.loop = function() {
 
@@ -12,25 +13,8 @@ module.exports.loop = function() {
         console.log(`Room ${name} has ${Game.rooms[name].energyAvailable}/${Game.rooms[name].energyCapacityAvailable} energy and level: ${controlLevel}`);
     
     //var room = Game.rooms['W37N57'];
-    var towers = Game.rooms[name].find(FIND_STRUCTURES, {
-        filter: (i) => i.structureType == STRUCTURE_TOWER
-    });
-
-    for (var tower in towers) { 
-        if (towers[tower]) {
-            var closestDamagedStructure = towers[tower].pos.findClosestByRange(FIND_STRUCTURES, {
-                filter: (structure) => structure.hits < structure.hitsMax
-            });
-            if (closestDamagedStructure) {
-                towers[tower].repair(closestDamagedStructure);
-            }
-
-            var closestHostile = towers[tower].pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-            if (closestHostile) {
-                towers[tower].attack(closestHostile);
-            }
-        }
-    }
+        var towers = Game.rooms[name].find(FIND_STRUCTURES, { filter: (i) => i.structureType == STRUCTURE_TOWER });
+        roleTower.run(towers) 
     } 
     
     var controlLevel = Game.rooms['W37N57'].controller['level']
@@ -63,16 +47,6 @@ module.exports.loop = function() {
         var invaderBody = [TOUGH, ATTACK, WORK, WORK, CLAIM, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE]
 
     }
-    /** else if (controlLevel == 3) { 
-        var scraperBody = [WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE]
-        var scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
-        var harvesterBody = [WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE]
-        var harvesterBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
-        var builderBody = [WORK, WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE]
-        var upgraderBody = [WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
-        var upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
-    } 
-    **/
 
     const scraperQuota = 4;
     const harvesterQuota = 10;
