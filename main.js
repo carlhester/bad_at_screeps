@@ -9,15 +9,10 @@ module.exports.loop = function() {
 
     for (var name in Game.rooms) {
         var controlLevel = Game.rooms[name].controller['level']
-        console.log('Room "' + name + '" has ' + Game.rooms[name].energyAvailable + '/' + Game.rooms[name].energyCapacityAvailable + ' energy' +
-            ' and level: ' + controlLevel);
-    }
-
-    var controlLevel = Game.rooms['W37N57'].controller['level']
-    var room = Game.rooms['W37N57'];
-
+        console.log(`Room ${name} has ${Game.rooms[name].energyAvailable}/${Game.rooms[name].energyCapacityAvailable} energy and level: ${controlLevel}`);
     
-    var towers = room.find(FIND_STRUCTURES, {
+    //var room = Game.rooms['W37N57'];
+    var towers = Game.rooms[name].find(FIND_STRUCTURES, {
         filter: (i) => i.structureType == STRUCTURE_TOWER
     });
 
@@ -36,7 +31,10 @@ module.exports.loop = function() {
             }
         }
     }
+    } 
     
+    var controlLevel = Game.rooms['W37N57'].controller['level']
+
 
     for (var name in Memory.creeps) {
         if (!Game.creeps[name]) {
