@@ -15,7 +15,7 @@ module.exports.loop = function() {
 
     var controlLevel = Game.rooms['W37N57'].controller['level']
 
-    var towers = room.findroom.find(FIND_STRUCTURES, {
+    var towers = room.find(FIND_STRUCTURES, {
         filter: (i) => i.structureType == STRUCTURE_TOWER
     });
 
