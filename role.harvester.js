@@ -1,7 +1,7 @@
 var roleHarvester = {
 
     /** @param {Creep} creep **/
-    run: function(creep) {
+    run: function(creep, harvesters) {
         if (creep.carry.energy == 0) {
             var nearestPile = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES);
             var piles = creep.room.find(FIND_DROPPED_RESOURCES);
@@ -40,9 +40,15 @@ var roleHarvester = {
                     }
                 })
             }
-
-
             if (targets.length > 0) {
+                if (harvesters < 4) { targets[0] = creep.room.findClosestByRange(FIND_STRUCTURES, {
+                filter: (structure) => {
+                    return (structure.structureType == STRUCTURE_EXTENSION ||
+                        structure.structureType == STRUCTURE_SPAWN ||
+                        structure.structureType == STRUCTURE_TOWER) && structure.energy < structure.energyCapacity;
+                }
+                });
+                } 
                 if (creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets[0], { visualizePathStyle: { stroke: '#ffffff' } });
                 }

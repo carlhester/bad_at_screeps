@@ -152,7 +152,7 @@ module.exports.loop = function() {
         }
 
         if (creep.memory.role == 'harvester') {
-            roleHarvester.run(creep);
+            roleHarvester.run(creep, harvesters.length);
         }
         if (creep.memory.role == 'upgrader') {
             roleUpgrader.run(creep);
