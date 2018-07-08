@@ -69,7 +69,7 @@ module.exports.loop = function() {
 
 
     if (scrapers.length < scraperQuota) {
-        if (scrapers.length < 4) {
+        if (harvesters.length < 2) {
             var bodyArray = scraperBodyFallback;
         } else {
             var bodyArray = scraperBody;
