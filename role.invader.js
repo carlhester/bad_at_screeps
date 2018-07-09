@@ -39,7 +39,8 @@ const roleInvader = {
                 try_build = creep.build(targets[0])
                 console.log(try_build)
                 if (try_build == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(targets[0], { visualizePathStyle: { stroke: '#ffffff' } });
+                    try_move = creep.moveTo(targets[0], { visualizePathStyle: { stroke: '#ffffff' } });
+                    console.log(try_move)
                 }
             } else if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
           console.log(`Tried to upgrade ${creep.room.controller}.  Need to get closer.`) 
