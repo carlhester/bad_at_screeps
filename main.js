@@ -44,7 +44,7 @@ module.exports.loop = function() {
         var scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
         var harvesterBody = [WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE]
         var harvesterBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
-        var explorerBody = [WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE]
+        var explorerBody = [WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE]
         var builderBody = [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
         var upgraderBody = [WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE]
         var upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
@@ -57,7 +57,7 @@ module.exports.loop = function() {
     const builderQuota = 1;
     const upgraderQuota = 0;
     const invaderQuota = 1;
-    const explorerQuota = 6;
+    const explorerQuota = 8;
 
     var scrapers = _.filter(Game.creeps, (creep) => creep.memory.role == 'scraper');
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
