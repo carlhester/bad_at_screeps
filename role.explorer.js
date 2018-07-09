@@ -59,7 +59,7 @@ var roleExplorer = {
                 });
             console.log(`${creep.name} targeting ${target} ${target.length}`)
             
-            if (target.length == 0){ 
+            if (!target){ 
                 target = creep.pos.findClosestByRange(FIND_STRUCTURES, { 
                     filter: (structure) => { 
                         return (structure.structureType = STRUCTURE_STORAGE)
