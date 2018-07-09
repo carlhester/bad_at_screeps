@@ -56,7 +56,7 @@ module.exports.loop = function() {
     const harvesterQuota = 10;
     const builderQuota = 2;
     const upgraderQuota = 0;
-    const invaderQuota = 3;
+    const invaderQuota = 1;
     const explorerQuota = 2;
 
     var scrapers = _.filter(Game.creeps, (creep) => creep.memory.role == 'scraper');
