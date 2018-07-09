@@ -36,7 +36,7 @@ var roleExplorer = {
             } else { 
                     var nextRoom = roleExplorer.findNewRoom(creep)
                     creep.moveTo(new RoomPosition(25, 25, nextRoom));
-                    console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} This room is not mine. Moving to ${nextRoom}`}
+                    console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} This room is not mine. Moving to ${nextRoom}`)
 
                 }
 
