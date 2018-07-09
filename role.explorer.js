@@ -57,7 +57,7 @@ var roleExplorer = {
                         structure.structureType == STRUCTURE_TOWER) && structure.energy < structure.energyCapacity;
                 }
                 });
-            console.log(`${creep.name} targeting ${target} ${target.length}`)
+            console.log(`${creep.name} targeting ${target}`)
             
             if (!target){ 
                 target = creep.pos.findClosestByRange(FIND_STRUCTURES, { 
