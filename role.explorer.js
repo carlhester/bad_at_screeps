@@ -28,7 +28,7 @@ var roleExplorer = {
 
 
         if (creep.carry.energy < creep.carryCapacity) {
-            console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity}`)
+            //console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity}`)
             if (creep.room.controller.my) {
                 var nextRoom = roleExplorer.findNewRoom(creep)
                 creep.moveTo(new RoomPosition(25, 25, nextRoom), { visualizePathStyle: { stroke: '#ffaa00' } });
