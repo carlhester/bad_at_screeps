@@ -38,23 +38,23 @@ var roleExplorer = {
             if (creep.room.controller.my) {
                 var nextRoom = roleExplorer.findNewRoom(creep)
                 creep.moveTo(new RoomPosition(25, 25, nextRoom), { visualizePathStyle: { stroke: '#ffaa00' } });
-                console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} This room is mine. Moving on to ${nextRoom}`)
+                console.log(`${creep.name} (${creep.pos})\t harvesting: ${creep.memory.harvesting}\t ${creep.carry.energy}/${creep.carryCapacity} This room is mine. Moving on to ${nextRoom}`)
             } else if (Game.rooms[creep.room.name].controller.owner == undefined) {
                 var source = creep.pos.findClosestByRange(FIND_SOURCES);
                 var try_harvest = creep.harvest(source)
-                console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} This room is not owned. Attempting to harvest from ${source}: ${try_harvest}`)
+                console.log(`${creep.name} (${creep.pos})\t harvesting: ${creep.memory.harvesting}\t ${creep.carry.energy}/${creep.carryCapacity} This room is not owned. Attempting to harvest from ${source}: ${try_harvest}`)
                 if (try_harvest == ERR_NOT_IN_RANGE) {
                     creep.moveTo(source, { visualizePathStyle: { stroke: '#ffaa00' } });
                 } 
             } else { 
                     var nextRoom = roleExplorer.findNewRoom(creep)
                     creep.moveTo(new RoomPosition(43, 20, nextRoom), { visualizePathStyle: { stroke: '#ffaa00' } });
-                    console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} This room is not mine. Moving to ${nextRoom}`)
+                    console.log(`${creep.name} (${creep.pos})\t harvesting: ${creep.memory.harvesting}\t ${creep.carry.energy}/${creep.carryCapacity} This room is not mine. Moving to ${nextRoom}`)
 
             }
 
         } else if ((creep.room.name == creep.memory.home) && creep.memory.harvesting == false) {
-            console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} Home sweet Home.  Fill up the Storage`)
+            console.log(`${creep.name} (${creep.pos})\t harvesting: ${creep.memory.harvesting}\t ${creep.carry.energy}/${creep.carryCapacity} Home sweet Home.  Fill up the Storage`)
  
             var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                 filter: (structure) => {
@@ -71,13 +71,13 @@ var roleExplorer = {
                     }
                 });
             }
-            console.log(`${creep.name} targeting ${target}`)
+            console.log(`${creep.name}\t harvesting: ${creep.memory.harvesting}\t targeting ${target}`)
 
             if (creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, { visualizePathStyle: { stroke: '#ffffff' } });
                 }
         } else {
-            console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} Not sure what I should do.  Heading home`)
+            console.log(`${creep.name} (${creep.pos})\t harvesting: ${creep.memory.harvesting}\t ${creep.carry.energy}/${creep.carryCapacity} Not sure what I should do.  Heading home`)
             creep.moveTo(new RoomPosition(17, 11, creep.memory.home), { visualizePathStyle: { stroke: '#ffaa00' } });
 
         }
