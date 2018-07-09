@@ -40,7 +40,7 @@ module.exports.loop = function() {
     } else {
         var scraperBody = [WORK, WORK, WORK, WORK, WORK, MOVE]
         var scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
-        var harvesterBody = [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE]
+        var harvesterBody = [WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE]
         var harvesterBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
         var builderBody = [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
         var upgraderBody = [WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE]
