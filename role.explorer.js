@@ -15,12 +15,18 @@ var roleExplorer = {
             exit_list.push(exits['3'])
         } 
         **/
-        
+
         return exit_list[0]
     },
 
 
     run: function(creep) {
+        if(creep.hits < creep.memory.lastHits) {
+            console.log(`${creep.name} has been attacked at ${creep.pos}`);
+        }
+        creep.memory.lastHits = creep.hits;
+
+
         if (creep.carry.energy < creep.carryCapacity) {
             console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity}`)
             if (creep.room.controller.my) {
