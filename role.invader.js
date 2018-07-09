@@ -26,7 +26,7 @@ const roleInvader = {
         creep.moveTo(pos);
       }
     } else if (creep.room.name == 'W38N58') {
-      console.log(`Downgrade in ${Room.controller.ticksToDowngrade}`)
+      //console.log(`Downgrade in ${Room.controller.ticksToDowngrade}`)
 
       //console.log(`mine? ${creep.room.controller.my}`)
       if (!creep.room.controller.my) {
