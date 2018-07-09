@@ -26,9 +26,15 @@ var roleExplorer = {
         }
         creep.memory.lastHits = creep.hits;
 
+        if (creep.carry.energy == 0) { 
+            creep.memory.harvesting = true
+        }
 
-        if (creep.carry.energy < 50) {
-            //console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity}`)
+        if (creep.carry.energy == creep.carryCapacity) { 
+            creep.memory.harvesting = false
+        }
+
+        if ((creep.carry.energy < creep.carryCapacity) && creep.memory.harvesting) {
             if (creep.room.controller.my) {
                 var nextRoom = roleExplorer.findNewRoom(creep)
                 creep.moveTo(new RoomPosition(25, 25, nextRoom), { visualizePathStyle: { stroke: '#ffaa00' } });
@@ -45,9 +51,9 @@ var roleExplorer = {
                     creep.moveTo(new RoomPosition(43, 20, nextRoom), { visualizePathStyle: { stroke: '#ffaa00' } });
                     console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} This room is not mine. Moving to ${nextRoom}`)
 
-                }
+            }
 
-        } else if (creep.room.name == creep.memory.home) {
+        } else if ((creep.room.name == creep.memory.home) && creep.memory.harvesting = false) {
             console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} Home sweet Home.  Fill up the Storage`)
  
             var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
