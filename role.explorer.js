@@ -50,21 +50,21 @@ var roleExplorer = {
         } else if (creep.room.name == creep.memory.home) {
             console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} Home sweet Home.  Fill up the Storage`)
  
-            /**var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+            var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                 filter: (structure) => {
                     return (structure.structureType == STRUCTURE_EXTENSION ||
                         structure.structureType == STRUCTURE_SPAWN || 
                         structure.structureType == STRUCTURE_TOWER) && structure.energy < structure.energyCapacity;
                 }
                 });
-            **/
-            //if (target == null){ 
+            
+            if (target == null){ 
                 var target = creep.pos.findClosestByRange(FIND_STRUCTURES, { 
                     filter: (structure) => { 
                         return (structure.structureType == STRUCTURE_STORAGE)
                     }
                 });
-            //}
+            }
             console.log(`${creep.name} targeting ${target}`)
 
             if (creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
