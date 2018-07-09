@@ -27,7 +27,7 @@ var roleExplorer = {
         creep.memory.lastHits = creep.hits;
 
 
-        if (creep.carry.energy == 0) {
+        if (creep.carry.energy < 50) {
             //console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity}`)
             if (creep.room.controller.my) {
                 var nextRoom = roleExplorer.findNewRoom(creep)
