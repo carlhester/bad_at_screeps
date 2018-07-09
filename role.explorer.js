@@ -23,7 +23,7 @@ var roleExplorer = {
         if (creep.carry.energy < creep.carryCapacity) {
             console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity}`)
             if (creep.room.controller.my) {
-                var nextRoom = findNewRoom(creep)
+                var nextRoom = roleExplorer.findNewRoom(creep)
                 creep.moveTo(new RoomPosition(25, 25, nextRoom));
                 console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} This room is mine. Moving on to ${nextRoom}`)
             } else {
@@ -34,7 +34,7 @@ var roleExplorer = {
                 if (try_harvest == ERR_NOT_IN_RANGE) {
                     creep.moveTo(source, { visualizePathStyle: { stroke: '#ffaa00' } });
                 } else if (try_harvest == ERR_NOT_OWNER) {
-                    var nextRoom = findNewRoom(creep)
+                    var nextRoom = roleExplorer.findNewRoom(creep)
                     creep.moveTo(new RoomPosition(25, 25, nextRoom)); 
                 }
             }
