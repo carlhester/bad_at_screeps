@@ -33,7 +33,7 @@ var roleExplorer = {
                 var nextRoom = roleExplorer.findNewRoom(creep)
                 creep.moveTo(new RoomPosition(25, 25, nextRoom), { visualizePathStyle: { stroke: '#ffaa00' } });
                 console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} This room is mine. Moving on to ${nextRoom}`)
-            } else if (username in Game.rooms[creep.room.name].controller.owner) {
+            } else if (Game.rooms[creep.room.name].controller.owner > 0) {
                 var source = creep.pos.findClosestByRange(FIND_SOURCES);
                 var try_harvest = creep.harvest(source)
                 console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} This room is not owned. Attempting to harvest from ${source}: ${try_harvest}`)
