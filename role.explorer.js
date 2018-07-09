@@ -14,7 +14,7 @@ var roleExplorer = {
         } else if (exits['5']){
             exit_list.push(exits['5'])
         }
-         
+
         return exit_list[0]
     },
 
@@ -29,13 +29,15 @@ var roleExplorer = {
             } else if (!Game.rooms[creep.room.name].controller.owner.username) {
                 var source = creep.pos.findClosestByRange(FIND_SOURCES);
                 var try_harvest = creep.harvest(source)
-                console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} This room is not mine. Attempting to harvest from ${source}: ${try_harvest}`)
+                console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} This room is not owned. Attempting to harvest from ${source}: ${try_harvest}`)
                 if (try_harvest == ERR_NOT_IN_RANGE) {
                     creep.moveTo(source, { visualizePathStyle: { stroke: '#ffaa00' } });
                 } 
             } else { 
                     var nextRoom = roleExplorer.findNewRoom(creep)
-                    creep.moveTo(new RoomPosition(25, 25, nextRoom)); 
+                    creep.moveTo(new RoomPosition(25, 25, nextRoom));
+                    console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} This room is not mine. Moving to ${nextRoom}`}
+
                 }
 
         } else if (creep.room.name == creep.memory.home) { 
