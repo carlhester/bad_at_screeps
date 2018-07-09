@@ -8,10 +8,10 @@ const roleInvader = {
     } else if (creep.room.name == 'W37N58') {
       const next_room_path = Game.map.findRoute('W37N58', 'W38N58');
       if (next_room_path == ERR_NO_PATH) {
-        console.log('no path.. attack!');
+        console.log(`${creep.name} no path.. attack!`);
         target = creep.pos.findClosestByRange(FIND_STRUCTURES);
         const try_attack = creep.attack(target);
-        console.log(`attacking ${target}\tresult${try_attack}`);
+        console.log(`${creep.name} attacking ${target}\tresult${try_attack}`);
       } else {
         const pos = new RoomPosition(39, 25, 'W38N58');
         creep.moveTo(pos);
@@ -25,10 +25,10 @@ const roleInvader = {
           creep.moveTo(creep.room.controller);
         }
       } else if (creep.carry.energy < creep.carryCapacity) {
-        console.log(`Carrying ${creep.carry.energy}, better harvest`) 
+        console.log(`${creep.name} Carrying ${creep.carry.energy}, better harvest`) 
         const sources = creep.room.find(FIND_SOURCES);
         var try_harvest = creep.harvest(sources[0])
-        console.log(`Carrying ${creep.carry.energy}, Trying to harvest: ${try_harvest}`) 
+        console.log(`${creep.name} Carrying ${creep.carry.energy}, Trying to harvest: ${try_harvest}`) 
         if (try_harvest == ERR_NOT_IN_RANGE) {
           creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' } });
         }
@@ -37,10 +37,10 @@ const roleInvader = {
         var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
         if (targets.length) {
                 try_build = creep.build(targets[0])
-                console.log(try_build)
+                console.log(`${creep.name} building: ${try_build}`)
                 if (try_build == ERR_NOT_IN_RANGE) {
                     try_move = creep.moveTo(targets[0], { visualizePathStyle: { stroke: '#ffffff' } });
-                    console.log(try_move)
+                    console.log(`${creep.name} moving: ${try_move}`)
                 }
             } else if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
           console.log(`Tried to upgrade ${creep.room.controller}.  Need to get closer.`) 
