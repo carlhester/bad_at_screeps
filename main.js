@@ -137,7 +137,7 @@ module.exports.loop = function() {
         var newName = 'Invader' + Game.time;
         var bodyArray = invaderBody;
         var bodyCost = calcBodyCost.calc(bodyArray)
-        var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'invader' } });
+        var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'invader', building: false } });
         if (result == 0) {
             console.log('Spawning new invader(' + bodyCost + '): ' + newName);
         } else {

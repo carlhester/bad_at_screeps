@@ -1,5 +1,14 @@
 const roleInvader = {
   run(creep) {
+
+    if (creep.memory.building && creep.carry.energy == 0) {
+      creep.memory.building = false;
+    }
+    if (!creep.memory.building && creep.carry.energy == creep.carryCapacity) {
+        creep.memory.building = true;
+    }
+
+
     // find the exit of room W37N57 north to W37N58 west to W38N58
     console.log(`${creep.name} now in ${creep.room.name}`);
     if (creep.room.name == 'W37N57') {
@@ -24,7 +33,7 @@ const roleInvader = {
         if (try_claim == ERR_NOT_IN_RANGE) {
           creep.moveTo(creep.room.controller);
         }
-      } else if (creep.carry.energy < creep.carryCapacity) {
+      } else if (!creep.memory.building) {
         console.log(`${creep.name} Carrying ${creep.carry.energy}, better harvest`) 
         const sources = creep.room.find(FIND_SOURCES);
         var try_harvest = creep.harvest(sources[0])
