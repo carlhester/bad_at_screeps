@@ -26,7 +26,7 @@ const roleInvader = {
         creep.moveTo(pos);
       }
     } else if (creep.room.name == 'W38N58') {
-      //console.log(`Downgrade in ${Room.controller.ticksToDowngrade}`)
+      console.log(`Downgrade in ${Game.rooms['W38N58'].controller.ticksToDowngrade}`)
 
       //console.log(`mine? ${creep.room.controller.my}`)
       if (!creep.room.controller.my) {
@@ -46,9 +46,9 @@ const roleInvader = {
 
       } else { 
         var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-        //if (Room.controller.ticksToDowngrade < 3000) { 
-        //  targets = []
-        //}
+        if (Game.rooms['W38N58'].controller.ticksToDowngrade < 3000) { 
+          targets = []
+        }
         if (targets.length) {
                 try_build = creep.build(targets[0])
                 console.log(`${creep.name} building: ${try_build}`)
