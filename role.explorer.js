@@ -14,6 +14,8 @@ var roleExplorer = {
             } else if (exits['7']){
             } **/
         } else if (creep.room.name == creep.memory.home && creep.carry.energy > 0) {
+            console.log(`${creep.name} (${creep.room.name}) : Have energy to unload`)
+
             target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                 filter: (structure) => {
                     return (structure.structureType == STRUCTURE_EXTENSION ||
@@ -26,12 +28,15 @@ var roleExplorer = {
                 }
 
         } else if (creep.room.name != creep.memory.home && creep.carry.energy < creep.carryCapacity){
+            console.log(`${creep.name} (${creep.room.name}) : Need to find some good stuff`)
+
             var source = creep.pos.findClosestByRange(FIND_SOURCES);
             if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(source, { visualizePathStyle: { stroke: '#ffaa00' } });
             }
 
         } else { 
+            console.log(`${creep.name} (${creep.room.name}) : lets head back`)
             creep.moveTo(new RoomPosition(24, 1, creep.memory.home));
 
         }
