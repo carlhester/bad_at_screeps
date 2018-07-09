@@ -46,7 +46,7 @@ const roleInvader = {
 
       } else { 
         var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-        if (Game.rooms['W38N58'].controller.ticksToDowngrade < 3000) { 
+        if (Game.rooms['W38N58'].controller.ticksToDowngrade < 2100) { 
           targets = []
         }
         if (targets.length) {
