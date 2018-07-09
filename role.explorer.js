@@ -47,7 +47,9 @@ var roleExplorer = {
 
                 }
 
-        } else if (creep.room.name == creep.memory.home) { 
+        } else if (creep.room.name == creep.memory.home) {
+            console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} Home sweet Home.  Fill up the Storage`)
+ 
             target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                 filter: (structure) => {
                     return (structure.structureType == STRUCTURE_STORAGE)
