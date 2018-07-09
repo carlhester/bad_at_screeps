@@ -54,10 +54,19 @@ var roleExplorer = {
                 filter: (structure) => {
                     return (structure.structureType == STRUCTURE_EXTENSION ||
                         structure.structureType == STRUCTURE_SPAWN || 
-                        structure.structureType == STRUCTURE_STORAGE ||
                         structure.structureType == STRUCTURE_TOWER) && structure.energy < structure.energyCapacity;
                 }
                 });
+            console.log(`${creep.name} targeting ${target} ${target.length}`)
+            
+            if (target.length == 0){ 
+                target = creep.pos.findClosestByRange(FIND_STRUCTURES, { 
+                    filter: (structure) => { 
+                        return (structure.structureType = STRUCTURE_STORAGE)
+                    }
+                });
+            }
+
             if (creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, { visualizePathStyle: { stroke: '#ffffff' } });
                 }
