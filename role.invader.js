@@ -26,6 +26,8 @@ const roleInvader = {
         creep.moveTo(pos);
       }
     } else if (creep.room.name == 'W38N58') {
+      console.log(`Downgrade in ${Room.controller.ticksToDowngrade}`)
+
       //console.log(`mine? ${creep.room.controller.my}`)
       if (!creep.room.controller.my) {
         const try_claim = creep.claimController(creep.room.controller);
@@ -44,7 +46,6 @@ const roleInvader = {
 
       } else { 
         var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-        console.log(`Downgrade in ${Room.controller.ticksToDowngrade}`)
         if (Room.controller.ticksToDowngrade < 3000) { 
           targets = []
         }
