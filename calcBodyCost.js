@@ -21,11 +21,7 @@ var calcBodyCost = {
             } else if (bodyArray[bodyPart] == CLAIM) {
                 bodyCost += 600;
             }
-
-
-
-        }
-        
+        } 
         return (bodyCost);
     }
 };

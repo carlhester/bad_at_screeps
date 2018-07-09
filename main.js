@@ -1,5 +1,6 @@
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
+var roleExplorer = require('role.explorer');
 var calcBodyCost = require('calcBodyCost');
 var roleBuilder = require('role.builder');
 var roleScraper = require('role.scraper');
@@ -34,6 +35,7 @@ module.exports.loop = function() {
         var scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
         var harvesterBody = [WORK, CARRY, MOVE, MOVE, MOVE]
         var harvesterBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
+        var explorerBody = [WORK, CARRY, MOVE, MOVE, MOVE]
         var builderBody = [WORK, CARRY, MOVE]
         var upgraderBody = [WORK, CARRY, MOVE, MOVE, MOVE]
         var upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
@@ -42,6 +44,7 @@ module.exports.loop = function() {
         var scraperBodyFallback = [WORK, WORK, MOVE, MOVE]
         var harvesterBody = [WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE]
         var harvesterBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
+        var explorerBody = [WORK, CARRY, MOVE, MOVE, MOVE]
         var builderBody = [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE]
         var upgraderBody = [WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE]
         var upgraderBodyFallback = [WORK, CARRY, MOVE, MOVE, MOVE]
@@ -54,17 +57,20 @@ module.exports.loop = function() {
     const builderQuota = 2;
     const upgraderQuota = 0;
     const invaderQuota = 2;
+    const explorerQuota = 1;
 
     var scrapers = _.filter(Game.creeps, (creep) => creep.memory.role == 'scraper');
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     var invaders = _.filter(Game.creeps, (creep) => creep.memory.role == 'invader');
+    var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
 
     console.log(`Scrapers: ${scrapers.length}/${scraperQuota}` + 
         `\tHarvesters: ${harvesters.length}/${harvesterQuota}` +  
         `\tBuilders: ${builders.length}/${builderQuota}` +  
         `\tUpgraders: ${upgraders.length}/${upgraderQuota}` +  
+        `\tExplorers: ${explorers.length}/${explorerQuota}` +  
         `\tInvaders: ${invaders.length}/${invaderQuota}`);
 
 
@@ -143,6 +149,16 @@ module.exports.loop = function() {
         } else {
             console.log('Invader Spawn Result(' + bodyCost + '): ' + result);
         }
+    } else if (explorers.length < explorerQuota) {
+        var newName = 'Explorer-' + Game.time;
+        var bodyArray = explorerBody;
+        var bodyCost = calcBodyCost.calc(bodyArray);
+        var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'explorer' } });
+        if (result == 0) {
+            console.log('Spawning new explorer(' + bodyCost + '): ' + newName);
+        } else {
+            console.log('Explorer Spawn Result(' + bodyCost + '): ' + result);
+        }
     }
 
     for (var name in Game.creeps) {
@@ -165,6 +181,9 @@ module.exports.loop = function() {
         }
         if (creep.memory.role == 'scraper') {
             roleScraper.run(creep);
+        }
+        if (creep.memory.role == 'explorer') {
+            roleExplorer.run(creep);
         }
     }
 }
