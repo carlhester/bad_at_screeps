@@ -46,9 +46,9 @@ const roleInvader = {
 
       } else { 
         var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-        if (Room.controller.ticksToDowngrade < 3000) { 
-          targets = []
-        }
+        //if (Room.controller.ticksToDowngrade < 3000) { 
+        //  targets = []
+        //}
         if (targets.length) {
                 try_build = creep.build(targets[0])
                 console.log(`${creep.name} building: ${try_build}`)
