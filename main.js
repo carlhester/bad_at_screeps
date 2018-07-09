@@ -153,7 +153,7 @@ module.exports.loop = function() {
         var newName = 'Explorer-' + Game.time;
         var bodyArray = explorerBody;
         var bodyCost = calcBodyCost.calc(bodyArray);
-        var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'explorer' } });
+        var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'explorer', home: 'W37N57' } });
         if (result == 0) {
             console.log('Spawning new explorer(' + bodyCost + '): ' + newName);
         } else {
