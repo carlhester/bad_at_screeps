@@ -9,12 +9,12 @@ var roleExplorer = {
             exit_list.push(exits['1'])
         } else if (exits['3']){
             exit_list.push(exits['3'])
-        } else if (exits['5']){
-            exit_list.push(exits['5'])
         } else if (exits['7']){
             exit_list.push(exits['7'])
+        } else if (exits['5']){
+            exit_list.push(exits['5'])
         }
-
+         
         return exit_list[0]
     },
 
