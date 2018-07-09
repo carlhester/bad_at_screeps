@@ -59,9 +59,9 @@ var roleExplorer = {
                 });
             **/
             //if (target == null){ 
-                target = creep.pos.findClosestByRange(FIND_STRUCTURES, { 
+                var target = creep.pos.findClosestByRange(FIND_STRUCTURES, { 
                     filter: (structure) => { 
-                        return (structure.structureType = STRUCTURE_STORAGE)
+                        return (structure.structureType == STRUCTURE_STORAGE)
                     }
                 });
             //}
