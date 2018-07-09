@@ -57,8 +57,6 @@ var roleExplorer = {
                         structure.structureType == STRUCTURE_TOWER) && structure.energy < structure.energyCapacity;
                 }
                 });
-            console.log(`${creep.name} targeting ${target}`)
-            
             if (target == null){ 
                 target = creep.pos.findClosestByRange(FIND_STRUCTURES, { 
                     filter: (structure) => { 
@@ -66,6 +64,7 @@ var roleExplorer = {
                     }
                 });
             }
+            console.log(`${creep.name} targeting ${target}`)
 
             if (creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, { visualizePathStyle: { stroke: '#ffffff' } });
