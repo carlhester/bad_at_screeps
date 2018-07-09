@@ -31,7 +31,7 @@ var roleExplorer = {
             console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity}`)
             if (creep.room.controller.my) {
                 var nextRoom = roleExplorer.findNewRoom(creep)
-                creep.moveTo(new RoomPosition(25, 25, nextRoom));
+                creep.moveTo(new RoomPosition(25, 25, nextRoom), { visualizePathStyle: { stroke: '#ffaa00' } });
                 console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} This room is mine. Moving on to ${nextRoom}`)
             } else if (!Game.rooms[creep.room.name].controller.owner.username) {
                 var source = creep.pos.findClosestByRange(FIND_SOURCES);
@@ -42,7 +42,7 @@ var roleExplorer = {
                 } 
             } else { 
                     var nextRoom = roleExplorer.findNewRoom(creep)
-                    creep.moveTo(new RoomPosition(25, 25, nextRoom));
+                    creep.moveTo(new RoomPosition(25, 25, nextRoom), { visualizePathStyle: { stroke: '#ffaa00' } });
                     console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} This room is not mine. Moving to ${nextRoom}`)
 
                 }
@@ -60,7 +60,7 @@ var roleExplorer = {
                 }
         } else {
             console.log(`${creep.name} (${creep.pos}) ${creep.carry.energy}/${creep.carryCapacity} Not sure what I should do.  Heading home`)
-            creep.moveTo(new RoomPosition(17, 11, creep.memory.home));
+            creep.moveTo(new RoomPosition(17, 11, creep.memory.home), { visualizePathStyle: { stroke: '#ffaa00' } });
 
         }
     }        
