@@ -24,7 +24,7 @@ var roleHarvester = {
                     creep.moveTo(target);
                 }
             } else { 
-                target = creep.room.findClosestByRange(FIND_STRUCTURES), { 
+                target = creep.pos.findClosestByRange(FIND_STRUCTURES), { 
                     filter: (structure) => { 
                         return (structure.structureType == STRUCTURE_STORAGE);
                     }
