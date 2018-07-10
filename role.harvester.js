@@ -23,6 +23,17 @@ var roleHarvester = {
                 if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target);
                 }
+            } else { 
+                target = creep.room.findClosestByRange(FIND_STRUCTURES), { 
+                    filter: (structure) => { 
+                        return (structure.structureType == STRUCTURE_STORAGE);
+                    }
+                }
+                var try_withdraw = creep.withdraw(target, RESOURCE_ENERGY)
+                if (try_withdraw == ERR_NOT_IN_RANGE) { 
+                    creep.moveTo(target);
+                }
+
             }
         } else {
             var targets = creep.room.find(FIND_STRUCTURES, {
