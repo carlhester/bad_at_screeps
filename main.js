@@ -57,7 +57,7 @@ module.exports.loop = function() {
     const builderQuota = 1;
     const upgraderQuota = 0;
     const invaderQuota = 2;
-    const explorerQuota = 8;
+    const explorerQuota = 0;
 
     var scrapers = _.filter(Game.creeps, (creep) => creep.memory.role == 'scraper');
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
@@ -84,100 +84,100 @@ module.exports.loop = function() {
         var harvest_target = roleScraper.getNextTarget(scrapers)
 
         var newName = 'Scraper-' + harvest_target + '-' + Game.time;
-        var result = Game.spawns['CHSpawn1'].spawnCreep(scraperBodyFallback, Game.time, {memory: {role: 'scraper', harvest_target: 0 } } );
-        var result = game.spawns['chspawn'].spawncreep(bodyarray, newname, {memory: {role: 'scraper', harvest_target: harvest_target } } );
+        var result = Game.spawns['CHSpawn1'].spawnCreep( scraperBodyFallback, Game.time, { memory: { role: 'scraper', harvest_target: 0} });
+        var result = Game.spawns['CHSpawn'].spawnCreep( bodyArray, newName, { memory: { role: 'scraper', harvest_target: harvest_target } });
 
-        var bodycost = calcbodycost.calc(bodyarray);
+        var bodyCost = calcBodyCost.calc(bodyArray);
         if (result == 0) {
-            console.log('spawning new scraper(' + bodycost + '): ' + newname);
+            console.log('Spawning new scraper(' + bodyCost + '): ' + newName);
         } else {
-            console.log('scraper spawn result(' + bodycost + '): ' + result);
+            console.log('Scraper Spawn Result(' + bodyCost + '): ' + result);
         }
-    } else if (harvesters.length < harvesterquota) {
+    } else if (harvesters.length < harvesterQuota) {
         if (harvesters.length < 2) {
-            var bodyarray = harvesterbodyfallback;
+            var bodyArray = harvesterBodyFallback;
         } else {
-            var bodyarray = harvesterbody;
+            var bodyArray = harvesterBody;
         }
 
-        var bodycost = calcbodycost.calc(bodyarray);
-        var newname = 'harvester' + game.time;
-        var result = game.spawns['chspawn1'].spawncreep(harvesterbodyfallback, game.time, { memory: { role: 'harvester', harvest_target: 0, transfer_target: 0 } });
-        var result = game.spawns['chspawn'].spawncreep(bodyarray, newname, { memory: { role: 'harvester', harvest_target: 0, transfer_target: 0 } });
+        var bodyCost = calcBodyCost.calc(bodyArray);
+        var newName = 'Harvester' + Game.time;
+        var result = Game.spawns['CHSpawn1'].spawnCreep(harvesterBodyFallback, Game.time, { memory: { role: 'harvester', harvest_target: 0, transfer_target: 0 } });
+        var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'harvester', harvest_target: 0, transfer_target: 0 } });
         if (result == 0) {
-            console.log('spawning new harvester(' + bodycost + '): ' + newname);
+            console.log('Spawning new harvester(' + bodyCost + '): ' + newName);
         } else {
-            console.log('harvester spawn result(' + bodycost + '): ' + result);
+            console.log('Harvester Spawn Result(' + bodyCost + '): ' + result);
         }
-    } else if (builders.length < builderquota) {
-        var newname = 'builder' + game.time;
-        var bodyarray = builderbody;
-        var bodycost = calcbodycost.calc(bodyarray);
-        var result = game.spawns['chspawn'].spawncreep(bodyarray, newname, { memory: { role: 'builder' } });
+    } else if (builders.length < builderQuota) {
+        var newName = 'Builder' + Game.time;
+        var bodyArray = builderBody;
+        var bodyCost = calcBodyCost.calc(bodyArray);
+        var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'builder' } });
         if (result == 0) {
-            console.log('spawning new builder(' + bodycost + '): ' + newname);
+            console.log('Spawning new builder(' + bodyCost + '): ' + newName);
         } else {
-            console.log('builder spawn result(' + bodycost + '): ' + result);
+            console.log('Builder Spawn Result(' + bodyCost + '): ' + result);
         }
-    } else if (upgraders.length < upgraderquota) {
+    } else if (upgraders.length < upgraderQuota) {
         if (upgraders.length < 2) {
-            var bodyarray = upgraderbodyfallback;
+            var bodyArray = upgraderBodyFallback;
         } else {
-            var bodyarray = upgraderbody;
+            var bodyArray = upgraderBody;
         }
-        var bodycost = calcbodycost.calc(bodyarray);
-        var newname = 'upgrader' + game.time;
-        var result = game.spawns['chspawn'].spawncreep(bodyarray, newname, { memory: { role: 'upgrader' } });
+        var bodyCost = calcBodyCost.calc(bodyArray);
+        var newName = 'Upgrader' + Game.time;
+        var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'upgrader' } });
         if (result == 0) {
-            console.log('spawning new upgrader(' + bodycost + '): ' + newname);
+            console.log('Spawning new upgrader(' + bodyCost + '): ' + newName);
         } else {
-            console.log('upgrader spawn result(' + bodycost + '): ' + result);
+            console.log('Upgrader Spawn Result(' + bodyCost + '): ' + result);
         }
-    } else if ((invaders.length < invaderquota) && (controllevel > 1)) {
-        var newname = 'invader' + game.time;
-        var bodyarray = invaderbody;
-        var bodycost = calcbodycost.calc(bodyarray)
-        var result = game.spawns['chspawn'].spawncreep(bodyarray, newname, { memory: { role: 'invader', building: false } });
+    } else if ((invaders.length < invaderQuota) && (controlLevel > 1)) {
+        var newName = 'Invader' + Game.time;
+        var bodyArray = invaderBody;
+        var bodyCost = calcBodyCost.calc(bodyArray)
+        var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'invader', building: false } });
         if (result == 0) {
-            console.log('spawning new invader(' + bodycost + '): ' + newname);
+            console.log('Spawning new invader(' + bodyCost + '): ' + newName);
         } else {
-            console.log('invader spawn result(' + bodycost + '): ' + result);
+            console.log('Invader Spawn Result(' + bodyCost + '): ' + result);
         }
-    } else if (explorers.length < explorerquota) {
-        var newname = 'explorer-' + game.time;
-        var bodyarray = explorerbody;
-        var bodycost = calcbodycost.calc(bodyarray);
-        var result = game.spawns['chspawn'].spawncreep(bodyarray, newname, { memory: { role: 'explorer', home: 'w37n57', harvesting: true } });
+    } else if (explorers.length < explorerQuota) {
+        var newName = 'Explorer-' + Game.time;
+        var bodyArray = explorerBody;
+        var bodyCost = calcBodyCost.calc(bodyArray);
+        var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'explorer', home: 'W37N57', harvesting: true } });
         if (result == 0) {
-            console.log('spawning new explorer(' + bodycost + '): ' + newname);
+            console.log('Spawning new explorer(' + bodyCost + '): ' + newName);
         } else {
-            console.log('explorer spawn result(' + bodycost + '): ' + result);
+            console.log('Explorer Spawn Result(' + bodyCost + '): ' + result);
         }
     }
 
-    for (var name in game.creeps) {
-        var creep = game.creeps[name];
-        if ((creep.tickstolivenumber < 2) && (creep.carry.energy > 0)) {
-            creep.drop(resource_energy);
+    for (var name in Game.creeps) {
+        var creep = Game.creeps[name];
+        if ((creep.ticksToLivenumber < 2) && (creep.carry.energy > 0)) {
+            creep.drop(RESOURCE_ENERGY);
         }
 
         if (creep.memory.role == 'harvester') {
-            roleharvester.run(creep, harvesters.length);
+            roleHarvester.run(creep, harvesters.length);
         }
         if (creep.memory.role == 'upgrader') {
-            roleupgrader.run(creep);
+            roleUpgrader.run(creep);
         }
         if (creep.memory.role == 'builder') {
-            rolebuilder.run(creep);
+            roleBuilder.run(creep);
         }
         if (creep.memory.role == 'invader') {
-            roleinvader.run(creep);
+            roleInvader.run(creep);
         }
         if (creep.memory.role == 'scraper') {
-            rolescraper.run(creep);
+            roleScraper.run(creep);
         }
         if (creep.memory.role == 'explorer') {
-            roleexplorer.run(creep);
+            roleExplorer.run(creep);
         }
     }
 }
