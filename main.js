@@ -73,6 +73,8 @@ module.exports.loop = function() {
         `\tExplorers: ${explorers.length}/${explorerQuota}` +  
         `\tInvaders: ${invaders.length}/${invaderQuota}`);
 
+    //var result = Game.spawns['CHSpawn1'].spawnCreep(scraperBodyFallback, Game.time, { memory: { role: 'scraper', harvest_target: 0} });
+    //var result = Game.spawns['CHSpawn1'].spawnCreep(harvesterBodyFallback, Game.time, { memory: { role: 'harvester', harvest_target: 0, transfer_target: 0 } });
 
     if (scrapers.length < scraperQuota) {
         if (harvesters.length < 2) {
@@ -84,7 +86,6 @@ module.exports.loop = function() {
         var harvest_target = roleScraper.getNextTarget(scrapers)
 
         var newName = 'Scraper-' + harvest_target + '-' + Game.time;
-        var result = Game.spawns['CHSpawn1'].spawnCreep( scraperBodyFallback, Game.time, { memory: { role: 'scraper', harvest_target: 0} });
         var result = Game.spawns['CHSpawn'].spawnCreep( bodyArray, newName, { memory: { role: 'scraper', harvest_target: harvest_target } });
 
         var bodyCost = calcBodyCost.calc(bodyArray);
@@ -102,7 +103,6 @@ module.exports.loop = function() {
 
         var bodyCost = calcBodyCost.calc(bodyArray);
         var newName = 'Harvester' + Game.time;
-        var result = Game.spawns['CHSpawn1'].spawnCreep(harvesterBodyFallback, Game.time, { memory: { role: 'harvester', harvest_target: 0, transfer_target: 0 } });
         var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'harvester', harvest_target: 0, transfer_target: 0 } });
         if (result == 0) {
             console.log('Spawning new harvester(' + bodyCost + '): ' + newName);
