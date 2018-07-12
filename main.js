@@ -103,7 +103,7 @@ module.exports.loop = function() {
 
         var bodyCost = calcBodyCost.calc(bodyArray);
         var newName = 'Harvester' + Game.time;
-        var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'harvester', harvest_target: 0, transfer_target: 0 } });
+        var result = Game.spawns['CHSpawn'].spawnCreep(bodyArray, newName, { memory: { role: 'harvester', collecting: false, harvest_target: 0, transfer_target: 0 } });
         if (result == 0) {
             console.log('Spawning new harvester(' + bodyCost + '): ' + newName);
         } else {
