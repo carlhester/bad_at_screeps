@@ -79,7 +79,7 @@ module.exports.loop = function() {
         //var result = Game.spawns['CHSpawn1'].spawnCreep(harvesterBodyFallback, Game.time, { memory: { role: 'harvester', harvest_target: 0, transfer_target: 0 } });
 
         roomSpawn = Game.rooms[room_name].find(FIND_MY_SPAWNS)
-        console.log(`${Game.rooms[room_name]} spawns ${roomSpawn}`)
+        console.log(`${Game.rooms[room_name]} spawns ${roomSpawn.spawn}`)
         if (scrapers.length < scraperQuota) {
             if (harvesters.length < 2) {
                 var bodyArray = scraperBodyFallback;
