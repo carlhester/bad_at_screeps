@@ -8,7 +8,7 @@ var roleInvader = require('role.invader');
 var roleTower = require('role.tower');
 
 module.exports.loop = function() {
-    console.log(`###################################################`);
+    console.log(`####################################################`);
 
     for (var name in Game.rooms) {
         var controlLevel = Game.rooms[name].controller['level']
